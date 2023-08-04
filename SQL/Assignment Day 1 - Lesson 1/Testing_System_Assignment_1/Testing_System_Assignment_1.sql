@@ -4,85 +4,99 @@ USE Testing_System_Assignment_1;
 
 DROP TABLE IF EXISTS `Department`;
 CREATE TABLE `Department`(
-	DepartmentID 	INT PRIMARY KEY AUTO_INCREMENT,
+	DepartmentID 	TINYINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
     DepartmentName 	VARCHAR(20)
 );
 
 DROP TABLE IF EXISTS `Position`;
 CREATE TABLE `Position` (
-	PositionID 		INT PRIMARY KEY AUTO_INCREMENT,
+	PositionID 		TINYINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
     PositionName 	ENUM("Dev", "Test", "Scrum Master", "PM")
 ); 
 
 DROP TABLE IF EXISTS `Account`;
 CREATE TABLE `Account`(
-	AccountID 		INT PRIMARY KEY AUTO_INCREMENT,
+	AccountID 		TINYINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
     Email			VARCHAR(50),
     Username		VARCHAR(50),
     FullName		VARCHAR(50),
-    DepartmentID	INT,
-    PositionID		INT,
-    CreateDate 		DATE
+    DepartmentID	TINYINT UNSIGNED,
+    PositionID		TINYINT UNSIGNED,
+    CreateDate 		DATE,
+	FOREIGN KEY (DepartmentID) REFERENCES `Department`(DepartmentID) ON DELETE CASCADE ,
+	FOREIGN KEY (PositionID) REFERENCES `Position`(PositionID) ON DELETE CASCADE 
 );
 
 DROP TABLE IF EXISTS `Group`;
 CREATE TABLE `Group`(
-	GroupID 	INT PRIMARY KEY AUTO_INCREMENT,
+	GroupID 	TINYINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
     GroupName 	VARCHAR(50),
-    CreateID 	INT,
+    CreateID 	TINYINT UNSIGNED,
     CreateDate 	DATE
 );
 
 DROP TABLE IF EXISTS `GroupAccount`;
 CREATE TABLE `GroupAccount`(
-	GroupID 	INT,
-    AccountID 	INT,
-    JoinDate 	DATE
+	GroupID 	TINYINT UNSIGNED,
+    AccountID 	TINYINT UNSIGNED,
+    JoinDate 	DATE,
+FOREIGN KEY (AccountID) REFERENCES `Account`(AccountID) ON DELETE CASCADE ,
+FOREIGN KEY (GroupID) REFERENCES `Group`(GroupID) ON DELETE CASCADE 
+
 );
 
 DROP TABLE IF EXISTS `TypeQuestion`;
 CREATE TABLE `TypeQUestion` (
-	TypeID 		INT PRIMARY KEY AUTO_INCREMENT,
+	TypeID 		TINYINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
     TypeName 	ENUM("Essay", "Multiple-Choice")
 );
 
 DROP TABLE IF EXISTS `CategoryQuestion`;
 CREATE TABLE `CategoryQuestion`(
-	CategoryID 		INT PRIMARY KEY AUTO_INCREMENT,
+	CategoryID 		TINYINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
     CategoryName 	VARCHAR(50)
 );
 
 DROP TABLE IF EXISTS `Question`;
 CREATE TABLE `Question` (
-	QuestionID 	INT PRIMARY KEY AUTO_INCREMENT,
+	QuestionID 	TINYINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
     Content 	VARCHAR(500),
-    CategoryID 	INT,
-    TypeID 		INT,
-    CreatorID 	INT,
-    CreateDate 	DATE
+    CategoryID 	TINYINT UNSIGNED,
+    TypeID 		TINYINT UNSIGNED,
+    CreatorID 	TINYINT UNSIGNED,
+    CreateDate 	DATE,
+FOREIGN KEY (TypeID) REFERENCES `TypeQuestion`(TypeID) ON DELETE CASCADE ,
+FOREIGN KEY (CategoryID) REFERENCES `CategoryQuestion`(CategoryID) ON DELETE CASCADE 
+
 );
 
 DROP TABLE IF EXISTS `Answer`;
 CREATE TABLE `Answer` (
-	AnswerID	INT PRIMARY KEY AUTO_INCREMENT,
+	AnswerID	TINYINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
     Content		VARCHAR(500),
-    QUestionID	INT,
-    isCorrect	ENUM("True", "False")
+    QuestionID	TINYINT UNSIGNED,
+    isCorrect	ENUM("True", "False"),
+	FOREIGN KEY (QuestionID) REFERENCES `Question`(QuestionID) ON DELETE CASCADE 
+
 );
 
 DROP TABLE IF EXISTS `Exam`;
 CREATE TABLE `Exam` (
-	ExamID		INT PRIMARY KEY AUTO_INCREMENT,
-    Code		INT,
+	ExamID		TINYINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+    `Code`		TINYINT UNSIGNED,
     Title		VARCHAR(50),
-    CategoryID	INT,
-	Duration	INT,
-    CreatorID	INT,
-    CreateDate	DATE
+    CategoryID	TINYINT UNSIGNED,
+	Duration	TINYINT UNSIGNED,
+    CreatorID	TINYINT UNSIGNED,
+    CreateDate	DATE,
+	FOREIGN KEY (CategoryID) REFERENCES `CategoryQuestion`(CategoryID) ON DELETE CASCADE 
+
 );
 
 DROP TABLE IF EXISTS `ExamQuestion`;
 CREATE TABLE `ExamQuestion` (
-	ExamID 		INT,
-    QuestionID 	INT
+	ExamID 		TINYINT UNSIGNED,
+    QuestionID 	TINYINT UNSIGNED,
+    FOREIGN KEY (QuestionID) REFERENCES `Question`(QuestionID) ON DELETE CASCADE ,
+	FOREIGN KEY (ExamID) REFERENCES `Exam`(ExamID) ON DELETE CASCADE 
 );
