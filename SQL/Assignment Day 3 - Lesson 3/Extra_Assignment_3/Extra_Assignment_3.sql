@@ -60,34 +60,54 @@ VALUES
     (178, "NgoTuanHung49", "2000-06-30", "Male", 16, 16, 46, "DKP178", "Excellent", "ROCKET38-59"),
     (179, "NgoTuanHung50", "2004-03-01", "Male", 14, 14, 44, "DKP179", "Bad", "ROCKET38-60");
     
-    
--- Question 2 Ở đây chúng ta sẽ xem như là tất cả các dữ liệu được nhập vào bảng đã vượt qua bài test đầu vào vì đề không cho rõ điều kiện.
-SELECT MONTH(Birth_Date), COUNT(MONTH(Birth_Date)) FROM `trainee`
+/* 
+ Question 2 Ở đây chúng ta sẽ xem như là tất cả các dữ liệu được nhập vào bảng đã vượt qua bài test đầu vào vì đề không cho rõ điều kiện. 
+ Vì thế chúng ta sẽ nhóm các record trong table theo tháng sinh rồi đếm số lượng thực tập sinh của mỗi tháng.
+*/    
+SELECT 
+    MONTH(Birth_Date), COUNT(MONTH(Birth_Date)) AS `SoLuong`
+FROM
+    `trainee`
 GROUP BY MONTH(Birth_Date)
-ORDER BY MONTH(Birth_Date);    
+ORDER BY MONTH(Birth_Date);  
+
+
+
 
 -- Question 3 Lấy ra thực tập sinh có tên dài nhất
 
--- Cách 1: Dùng Subquery
+-- Cách 1: subQuery - Chưa học tính tới ngày 9/8/2023
 SELECT 
     *
 FROM
     `trainee`
 WHERE
-    (Full_Name = (SELECT 
-            Full_Name
+    CHAR_LENGTH(Full_Name) = (SELECT 
+            MAX(CHAR_LENGTH(Full_Name))
         FROM
-            `trainee`
-        GROUP BY Full_Name
-        HAVING MAX(CHAR_LENGTH(Full_Name))
-        LIMIT 1));
+            `trainee`);
 
--- Cách 2 non-Subquery
+
+-- Cách 2: Không chính thống (Lươn lẹo) - Soft giảm dần theo số lượng ký tự rồi in ra duy nhất 1 record (Cũng là record có tên dài nhất) - Không khuyến khích
+SELECT 
+    Full_Name,
+    CHAR_LENGTH(Full_Name) AS `Long`
+
+FROM
+    `trainee`
+ORDER BY `Long` DESC
+LIMIT 1;
+    
     
 -- Question 4 Lấy ra tất cả các thực tập sinh ET đã vượt qua bài test đầu vào và đạt được điểm như bên dưới 
-SELECT * 
-FROM `trainee`
-WHERE ET_IQ + ET_Gmath >= 20 AND ET_IQ >= 8 AND ET_Gmath >= 8 AND ET_English>=18;
+SELECT 
+    *
+FROM
+    `trainee`
+WHERE
+    ET_IQ + ET_Gmath >= 20 AND ET_IQ >= 8
+        AND ET_Gmath >= 8
+        AND ET_English >= 18;
 
 
 
@@ -97,7 +117,9 @@ WHERE ET_IQ + ET_Gmath >= 20 AND ET_IQ >= 8 AND ET_Gmath >= 8 AND ET_English>=18
 INSERT INTO `trainee`
 VALUES (3, "NgoTuanHung00", "2004-03-01", "Male", 14, 14, 44, "DKP000", "Bad", "ROCKET38-00");
 
-DELETE FROM `trainee` WHERE TraineeID = 3;
+DELETE FROM `trainee` 
+WHERE
+    TraineeID = 3;
 
 
 
@@ -105,7 +127,7 @@ DELETE FROM `trainee` WHERE TraineeID = 3;
 INSERT INTO `trainee`
 VALUES (5, "NgoTuanHung999", "2004-03-01", "Male", 14, 14, 44, "DKP999", "Bad", "ROCKET38-999");
 
-UPDATE `trainee`
+UPDATE `trainee` 
 SET 
-	Training_Class = "DKP005"
+    Training_Class = 'DKP005'
 ;
