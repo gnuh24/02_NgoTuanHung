@@ -64,12 +64,22 @@ VALUES
  Question 2 Ở đây chúng ta sẽ xem như là tất cả các dữ liệu được nhập vào bảng đã vượt qua bài test đầu vào vì đề không cho rõ điều kiện. 
  Vì thế chúng ta sẽ nhóm các record trong table theo tháng sinh rồi đếm số lượng thực tập sinh của mỗi tháng.
 */    
+
+SELECT 
+    GROUP_CONCAT(Full_Name),   MONTH(Birth_Date)
+FROM
+    `trainee` 
+GROUP BY MONTH(Birth_Date)
+ORDER BY MONTH(Birth_Date);
+
 SELECT 
     MONTH(Birth_Date), COUNT(MONTH(Birth_Date)) AS `SoLuong`
 FROM
     `trainee`
 GROUP BY MONTH(Birth_Date)
 ORDER BY MONTH(Birth_Date);  
+
+
 
 
 

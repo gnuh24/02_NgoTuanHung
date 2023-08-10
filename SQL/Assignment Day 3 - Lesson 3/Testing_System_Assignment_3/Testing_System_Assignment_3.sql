@@ -99,7 +99,7 @@ WHERE `DepartmentID` = 2;
 
 
 -- Question 11: Lấy ra nhân viên có tên bắt đầu bằng chữ "D" và kết thúc bằng chữ "o"
-SELECT * FROM `account` WHERE FullName LIKE "D%" AND "%o";
+SELECT * FROM `account` WHERE FullName LIKE "%D%o";
 
 
 
