@@ -70,7 +70,9 @@ VALUES
 	(7, 'Python', '2023-07-25'),
 	(7, 'C#', '2023-07-25'),
 	(8, 'C++', '2023-08-30'),
-	(2, 'Java', '2023-02-20');
+	(2, 'Java', '2023-02-20'),
+	(2, 'Java', '2022-02-20');
+
 
 
 
@@ -108,7 +110,7 @@ GROUP BY t1.`Department_Name`;
 -- Display ra tên những người có trên 1 skill - Dùng GROUP BY
 -- DISTINCT được dùng ở đây cho những trường hợp mà database của chúng ta chưa được clean ^^ 
 -- Ex: Một người có thể có 2 record (1, 'Java', '2023-01-15'), (1, 'Java', '2020-01-15') -> Dùng DISTINCT để lọc đi những trường hợp này
-SELECT t1.`Employee_Name`, COUNT(DISTINCT t2.`Skill_Code`) AS `Number` , GROUP_CONCAT(t2.`Skill_Code`)  AS `Skill`
+SELECT t1.`Employee_Name`, COUNT(DISTINCT t2.`Skill_Code`) AS `Number` , GROUP_CONCAT(DISTINCT t2.`Skill_Code`)  AS `Skill`
 FROM `Employee_Table` t1
 JOIN `Employee_Skill_Table` t2 ON t1.`Employee_Number` = t2.`Employee_Number`
 GROUP BY t1.`Employee_Name`
