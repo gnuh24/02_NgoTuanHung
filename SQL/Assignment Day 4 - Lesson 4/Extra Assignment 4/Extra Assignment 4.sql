@@ -77,6 +77,7 @@ VALUES
 
 
 
+
     
 -- Question 3: Viết lệnh để lấy ra danh sách nhân viên (name) có skill Java
 -- NOTE!! Trường hợp nhân viên có nhiều skill
