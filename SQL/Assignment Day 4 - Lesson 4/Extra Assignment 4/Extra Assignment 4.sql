@@ -91,7 +91,7 @@ WHERE t2.`Skill_Code` = "Java";
 
 
 -- Question 4: Viết lệnh để lấy ra danh sách các phòng ban có >3 nhân viên
-SELECT t1.`Department_Name`, COUNT(t1.`Department_Name`) AS NumberOfStaff
+SELECT  t1.`Department_Name`, COUNT(t1.`Department_Name`) AS NumberOfStaff
 FROM `Department` t1
 JOIN `Employee_Table` t2 ON t1.`Department_Number` = t2.`Department_Number`
 GROUP BY t1.`Department_Name`
@@ -106,12 +106,10 @@ GROUP BY t1.`Department_Name`;
 
 -- Question 6: Viết lệnh để lấy ra danh sách nhân viên có > 1 skills.
 -- Hướng dẫn: sử dụng DISTINCT 
-
-
 -- Display ra tên những người có trên 1 skill - Dùng GROUP BY
 -- DISTINCT được dùng ở đây cho những trường hợp mà database của chúng ta chưa được clean ^^ 
 -- Ex: Một người có thể có 2 record (1, 'Java', '2023-01-15'), (1, 'Java', '2020-01-15') -> Dùng DISTINCT để lọc đi những trường hợp này
-SELECT t1.`Employee_Name`, COUNT(DISTINCT t2.`Skill_Code`) AS `Number` , GROUP_CONCAT(DISTINCT t2.`Skill_Code`)  AS `Skill`
+SELECT t1.`Employee_Name`, COUNT(DISTINCT  t2.`Skill_Code`) AS `Number` , GROUP_CONCAT(DISTINCT t2.`Skill_Code`)  AS `Skill`
 FROM `Employee_Table` t1
 JOIN `Employee_Skill_Table` t2 ON t1.`Employee_Number` = t2.`Employee_Number`
 GROUP BY t1.`Employee_Name`
