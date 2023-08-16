@@ -1,4 +1,4 @@
-USE `testing_system_assignemnt_1`; -- Còn câu 10 11 7 chưa xong
+USE `testing_system_assignment_1`;
  
 -- ______________________________________________________________________________QUERY_________________________________________________________________________________________
 -- Question 1: Tạo store để người dùng nhập vào tên phòng ban và in ra tất cả các account thuộc phòng ban đó
@@ -66,15 +66,19 @@ SET @testVarQuestion4_ID = 0, @testVarQuestion4_Name = "";
 CALL `Question_4`(@testVarQuestion4_ID, @testVarQuestion4_Name);
 SELECT @testVarQuestion4_ID  AS `Top_1_TypeID`, @testVarQuestion4_Name AS `Top_1_TypeName`;
 
+
+
+/* Question 6: 
+Viết 1 store cho phép người dùng nhập vào 1 chuỗi và trả về group có tên chứa chuỗi của người dùng nhập vào 
+hoặc trả về user có username chứa chuỗi của người dùng nhập vào */
+
 SELECT `GroupName` AS `Result` FROM `group` 
 			WHERE LOCATE("Bayern", `GroupName`)
 			UNION
 			SELECT `FullName` FROM `account` 
 			WHERE LOCATE("Ngo", `FullName`);
 
-/* Question 6: 
-Viết 1 store cho phép người dùng nhập vào 1 chuỗi và trả về group có tên chứa chuỗi của người dùng nhập vào 
-hoặc trả về user có username chứa chuỗi của người dùng nhập vào */
+
 DROP PROCEDURE IF EXISTS `Question_6`;
 DELIMITER $$
 CREATE PROCEDURE `Question_6`(IN  `p_in_Name` VARCHAR(50), OUT `p_out_Name` VARCHAR(50) )
@@ -104,11 +108,15 @@ Sau đó in ra kết quả tạo thành công
 DROP PROCEDURE IF EXISTS `Question_7`;
 DELIMITER $$
 	CREATE PROCEDURE `Question_7`(IN `p_in_FullName` VARCHAR(50), IN `p_in_Email` VARCHAR(50))
-    BEIGN
-		SELECT * FROM `account`;
+    BEGIN
+		INSERT INTO `Account`
+        (`Email`, `Username`, `FullName`, `DepartmentID`, `PositionID`, `CreateDate`)
+        VALUES(`p_in_Email`, SUBSTRING_INDEX(`p_in_Email`, "@", 1), `p_in_FullName`, 11, 1,NOW() );
+        SELECT * FROM `Account` WHERE `FullName` = `p_in_FullName`; 
     END$$
 DELIMITER ;
 
+CALL `Question_7`("Thomas Muller", "thomasmuller@gmail.com");
 
 -- Question 8: Viết 1 store cho phép người dùng nhập vào Essay hoặc Multiple-Choice để thống kê câu hỏi essay hoặc multiple-choice nào có content dài nhất
 
@@ -122,14 +130,11 @@ BEGIN
     WHERE t1.`TypeName` = `p_in_FullName`
     GROUP BY t1.`TypeName`, t2.`Content`, `Length`
     HAVING `Length` = (
-        SELECT MAX(`LENGTH`)
-        FROM (
-            SELECT CHAR_LENGTH(`content`) AS `LENGTH`
+        SELECT MAX(CHAR_LENGTH(`content`)) AS `LENGTH`
             FROM `typequestion` t3 
             JOIN `question` t4 ON t3.`TypeID` = t4.`TypeID`
-            WHERE t3.`TypeName` = `p_in_FullName`
-        ) AS `LengthTable`
-    );
+            WHERE t3.`TypeName` = "Essay"
+            );
 END $$
 DELIMITER ;
 CALL `Question_8`("Essay");
@@ -163,17 +168,40 @@ SELECT * FROM `exam`;
 /*
 -- Question 10: Tìm ra các exam được tạo từ 3 năm trước và xóa các exam đó đi (sử dụng store ở câu 9 để xóa) 
 Sau đó in số lượng record đã remove từ các table liên quan trong khi removing */
+DROP PROCEDURE IF EXISTS `Question_10`;
+DELIMITER $$
+CREATE PROCEDURE `Question_10`()
+	BEGIN
+		DELETE FROM `exam` 
+		WHERE `CreateDate` <= DATE_SUB(NOW(), INTERVAL 3 YEAR);
+    END $$
+DELIMITER ;
+CALL `Question_10`;
 
-SELECT * FROM `exam` 
-WHERE YEAR(NOW()) - YEAR(`CreateDate`)  > 3;
+SELECT * FROM `Exam`;
 
-
-
+INSERT INTO `Exam` (`ExamID`, `Code`, `Title`, `CategoryID`, `Duration`, `CreatorID`, `CreateDate`)
+VALUES ('12', '12', 'Calculus-1 Exam', '2', '90', '2', '2015-08-16');
 
 
 /* Question 11: Viết store cho phép người dùng xóa phòng ban bằng cách người dùng
 nhập vào tên phòng ban và các account thuộc phòng ban đó sẽ được
 chuyển về phòng ban default là phòng ban chờ việc*/
+DROP PROCEDURE  IF EXISTS `Question_11`;
+DELIMITER $$
+CREATE PROCEDURE `Question_11`(IN `p_in_departmentName` VARCHAR(50) )
+	BEGIN 
+		UPDATE `Account` SET `DepartmentID` = 11 
+        WHERE  `DepartmentID` = 
+        (
+			SELECT `DepartmentID` FROM `Department` WHERE `DepartmentName` =  `p_in_departmentName`
+        );
+        DELETE FROM `Department` 
+        WHERE `DepartmentName` =  `p_in_departmentName`;
+    END $$
+DELIMITER ;
+
+
 
 -- Question 12: Viết store để in ra mỗi tháng có bao nhiêu câu hỏi được tạo trong năm nay
 DROP PROCEDURE IF EXISTS `Question_12`;
@@ -202,6 +230,7 @@ DELIMITER $$
 		BEGIN
 			SELECT t1.`Month`,t2.`Year`, IFNULL(t2.`Quanlity`, "Không tìm thấy câu hỏi") AS `Quanlity`
             FROM (
+            -- Lựa ra những tháng cách hiện tại 6 tháng
 				SELECT MONTH(DATE_SUB(NOW(), INTERVAL i MONTH)) AS `Month`
 				 FROM (SELECT 6 AS i UNION SELECT 5 UNION SELECT 4 UNION SELECT 3 UNION SELECT 2 UNION SELECT 1 UNION SELECT 0) AS `month_intervals`
             ) t1
