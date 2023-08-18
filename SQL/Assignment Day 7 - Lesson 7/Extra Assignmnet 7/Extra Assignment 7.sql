@@ -26,21 +26,16 @@ FOR EACH ROW
 		IF NEW.`ProjectModuleDate` < `out_ProjectStartDate` THEN
 			SIGNAL SQLSTATE '45000'
 			SET MESSAGE_TEXT = 'Ngày bắt đầu không được đặt trước thời gian bắt đầu của Project';
-			-- SET NEW.`ProjectModuleDate` = `out_ProjectStartDate`;   
-        END IF;    
-		
-		IF NEW.`ProjectModuleCompletedOn` > `out_ProjectCompletedOn` THEN
+		ELSEIF NEW.`ProjectModuleCompletedOn` > `out_ProjectCompletedOn` THEN
 			SIGNAL SQLSTATE '45001'
 			SET MESSAGE_TEXT = 'Ngày kết thúc không được đặt sau thời gian kết thúc của Project';
-			-- SET NEW.`ProjectModuleCompletedOn` = `out_ProjectCompletedOn`;         
 		END IF;
-        
     END $$
 DELIMITER ;
 
 
 INSERT INTO `projectmodules`(ModuleID, ProjectID, EmployeeID, ProjectModuleDate, ProjectModuleDescription, ProjectModuleCompletedOn)
-VALUES (11, 2, 4, "2023-04-02", "Test1", "2024-02-04");
+VALUES (11, 2, 4, "2022-04-02", "Test1", "2024-02-04");
 
 
 DELETE FROM `ProjectModules`
