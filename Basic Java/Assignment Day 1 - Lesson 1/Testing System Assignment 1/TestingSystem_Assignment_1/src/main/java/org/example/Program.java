@@ -3,18 +3,20 @@ package org.example;
 
 import org.example.classes.*;
 
+
 import java.text.DateFormat;
-import java.util.Date;
+import java.text.ParseException;
+import java.time.LocalDate;
+import java.util.*;
+
 import org.example.classes.Position.*;
 import org.example.classes.TypeQuestion.*;
-import java.util.ArrayList;
+
 import java.text.SimpleDateFormat;
-import java.util.Locale;
-import java.util.Random;
 
 
 public class Program {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException {
         // Create objects of class Account
         Account account1 = new Account((short) 1, "email1@example.com", "user1", "User One", (byte) 1, (byte) 1, new Date());
         Account account2 = new Account((short) 2, "email2@example.com", "user2", "User Two", (byte) 2, (byte) 2, new Date());
@@ -96,6 +98,53 @@ public class Program {
             người hóng chuyện, tham gia tất cả các group"*/
 
         System.out.println("______________________________Question 2____________________________________");
+        //Tạo list các account
+        ArrayList<GroupAccount> listOfGroupAccount = new ArrayList<>();
+        listOfGroupAccount.add(groupAccount1);
+        listOfGroupAccount.add(groupAccount2);
+        listOfGroupAccount.add(groupAccount3);
+        int count_ex1_Q2 = 0;
+        ArrayList<Byte> listOfGroupOfAccount2 = new ArrayList<>();
+        for (GroupAccount i: listOfGroupAccount)
+            if (i.accountID == 2){
+                count_ex1_Q2++;
+                listOfGroupOfAccount2.add(i.groupID);
+            }
+
+        if (count_ex1_Q2 == 0)
+            System.out.println("Nhân viên này chưa có group");
+        else if (count_ex1_Q2 == 1) {
+            System.out.print("Group của nhân viên này là ");
+            if (listOfGroupOfAccount2.get(0) == 1)
+                System.out.println(group1.GroupName);
+            else if (listOfGroupOfAccount2.get(0) == 2)
+                System.out.println(group2.GroupName);
+            else if (listOfGroupOfAccount2.get(0) == 2)
+                System.out.println(group3.GroupName);
+        }
+
+        else if (count_ex1_Q2 == 2) {
+            System.out.print("Group của nhân viên này là ");
+            if (listOfGroupOfAccount2.get(0) == 1)
+                System.out.println(group1.GroupName);
+            else if (listOfGroupOfAccount2.get(0) == 2)
+                System.out.println(group2.GroupName);
+            else if (listOfGroupOfAccount2.get(0) == 2)
+                System.out.println(group3.GroupName);
+
+            if (listOfGroupOfAccount2.get(1) == 1)
+                System.out.println(group1.GroupName);
+            else if (listOfGroupOfAccount2.get(1) == 2)
+                System.out.println(group2.GroupName);
+            else if (listOfGroupOfAccount2.get(1) == 2)
+                System.out.println(group3.GroupName);
+        }
+        else if (count_ex1_Q2 == 3)
+            System.out.println("Nhân viên này là người quan trọng, tham gia nhiều group");
+        else             System.out.println("Nhân viên này là người hóng chuyện, tham gia tất cả các group");
+
+
+
         /* Question 3:
         Sử dụng toán tử ternary để làm Question 1*/
         System.out.println("______________________________Question 3____________________________________");
@@ -119,17 +168,12 @@ public class Program {
         Nếu số lượng account = 3 thì in ra "Nhóm có ba thành viên"
         Còn lại in ra "Nhóm có nhiều thành viên"*/
         System.out.println("______________________________Question 5____________________________________");
-        //Tạo list các account
-        ArrayList<Byte> listOfGroupAccount = new ArrayList<>();
-        listOfGroupAccount.add(groupAccount1.groupID);
-        listOfGroupAccount.add(groupAccount2.groupID);
-        listOfGroupAccount.add(groupAccount3.groupID);
-        System.out.println(listOfGroupAccount);
+
 
         //Đếm số lượng account trong group 1
         int countGroup1 = 0;
-        for (byte i: listOfGroupAccount)
-            if (i == 1)
+        for (GroupAccount i: listOfGroupAccount)
+            if (i.accountID == 1)
                 countGroup1++;
 
         switch (countGroup1){
@@ -352,17 +396,201 @@ public class Program {
         System.out.println(random.nextInt());
         /*Question 2:
         In ngẫu nhiên ra 1 số thực*/
+        System.out.println("______________________________Ex4 _ Question 2____________________________________ ");
+        System.out.println(random.nextFloat());
         /*Question 3:
         Khai báo 1 array bao gồm các tên của các bạn trong lớp, sau đó in ngẫu nhiên
         ra tên của 1 bạn*/
+        System.out.println("______________________________Ex4 _ Question 3____________________________________ ");
+        String[] listOfName = {"Ngô Tuấn Hưng 1", "Ngô Tuấn Hưng 2", "Ngô Tuấn Hưng 3", "Ngô Tuấn Hưng 4", "Ngô Tuấn Hưng 5"};
+        System.out.println( listOfName[random.nextInt(listOfName.length)]);
+
         /*Question 4:
         Lấy ngẫu nhiên 1 ngày trong khoảng thời gian 24-07-1995 tới ngày 20-12-
                 1995*/
+        System.out.println("______________________________Ex4 _ Question 4____________________________________ ");
+
+        int minDay_ex4_Q4 = (int) LocalDate.of(1995, 07, 24).toEpochDay();
+        int maxDay_ex4_Q4 = (int) LocalDate.of(1995, 12, 20).toEpochDay();
+        long randomInt = minDay_ex4_Q4 + random.nextInt(maxDay_ex4_Q4 - minDay_ex4_Q4);
+        LocalDate randomDay = LocalDate.ofEpochDay(randomInt);
+        System.out.println(randomDay);
+
         /*Question 5:
         Lấy ngẫu nhiên 1 ngày trong khoảng thời gian 1 năm trở lại đây*/
+        System.out.println("______________________________Ex4 _ Question 5____________________________________ ");
+
+        LocalDate localDate_ex4_Q5 = LocalDate.now();
+        int minDay_ex4_Q5 = (int) LocalDate.of(localDate_ex4_Q5.getYear() -1, localDate_ex4_Q5.getMonthValue(), localDate_ex4_Q5.getDayOfMonth()).toEpochDay();
+        int maxDay_ex4_Q5 = (int) LocalDate.of(localDate_ex4_Q5.getYear(), localDate_ex4_Q5.getMonthValue(), localDate_ex4_Q5.getDayOfMonth()).toEpochDay();
+
+        long randomInt_ex4_Q5 = minDay_ex4_Q5 + random.nextInt(maxDay_ex4_Q5 - minDay_ex4_Q5);
+        LocalDate randomDay_ex4_Q5 = LocalDate.ofEpochDay(randomInt);
+        System.out.println(randomDay_ex4_Q5);
+
         /*Question 6:
         Lấy ngẫu nhiên 1 ngày trong quá khứ*/
+        System.out.println("______________________________Ex4 _ Question 6____________________________________ ");
+
+        LocalDate localDate_ex4_Q6 = LocalDate.now();
+        int maxDay_ex4_Q6 = (int) LocalDate.of(localDate_ex4_Q6.getYear(), localDate_ex4_Q6.getMonthValue(), localDate_ex4_Q6.getDayOfMonth()).toEpochDay();
+
+        long randomInt_ex4_Q6 = random.nextInt(maxDay_ex4_Q6 );
+        LocalDate randomDay_ex4_Q6 = LocalDate.ofEpochDay(randomInt);
+        System.out.println(randomDay_ex4_Q6);
+
+
         /*Question 7:
         Lấy ngẫu nhiên 1 số có 3 chữ số*/
+        System.out.println("______________________________Ex4 _ Question 7____________________________________ ");
+        // (0 -> 899) + 100 -> (100 -> 999)
+        System.out.println(random.nextInt(900) + 100 );
+
+
+        /*Exercise 5: Input from console
+        Question 1:
+        Viết lệnh cho phép người dùng nhập 3 số nguyên vào chương trình*/
+        System.out.println("______________________________Ex5 _ Question 1____________________________________ ");
+
+        Scanner input = new Scanner(System.in);
+        int a_ex5_Q1 = input.nextInt();
+        int b_ex5_Q1 = input.nextInt();
+        int c_ex5_Q1 = input.nextInt();
+
+        /*Question 2:
+        Viết lệnh cho phép người dùng nhập 2 số thực vào chương trình*/
+        System.out.println("______________________________Ex5 _ Question 2____________________________________ ");
+
+        float a_ex_Q2 = input.nextFloat();
+        float b_ex_Q2 = input.nextFloat();
+        float c_ex_Q2 = input.nextFloat();
+
+        /*Question 3:
+        Viết lệnh cho phép người dùng nhập họ và tên*/
+        System.out.println("______________________________Ex5 _ Question 3____________________________________ ");
+        String name_ex5_Q3 = input.nextLine();
+        /*Question 4:
+        Viết lệnh cho phép người dùng nhập vào ngày sinh nhật của họ*/
+        System.out.println("______________________________Ex5 _ Question 4____________________________________ ");
+        String dateString_ex5_Q4 = input.nextLine();
+        SimpleDateFormat dateFormat_ex5_Q4 = new SimpleDateFormat("dd/MM/yyyy");
+        Date date_ex5_Q4 = dateFormat_ex5_Q4.parse(dateString_ex5_Q4);
+        System.out.println(date_ex5_Q4);
+
+        /*Question 5:
+        Viết lệnh cho phép người dùng tạo account (viết thành method)
+        Đối với property Position, Người dùng nhập vào 1 2 3 4 5 và vào
+        chương trình sẽ chuyển thành Position.Dev, Position.Test,
+                Position.ScrumMaster, Position.PM*/
+        System.out.println("______________________________Ex5 _ Question 5____________________________________ ");
+
+        short accountID = input.nextShort();
+        String email = input.nextLine();
+        String username = input.nextLine();
+        String fullName = input.nextLine();
+        byte departmentID = input.nextByte();
+
+        byte positionID = input.nextByte();
+
+
+        String dateString = input.nextLine();
+        SimpleDateFormat simpleDateFormat_e5_Q6 = new SimpleDateFormat("dd/MM/yyyy");
+        Date createDate = simpleDateFormat_e5_Q6.parse(dateString);
+
+        Account account4 = new Account(accountID, email, username, fullName, departmentID, positionID, createDate);
+        /*Question 6:
+        Viết lệnh cho phép người dùng tạo department (viết thành method)*/
+        /*Question 7:
+        Nhập số chẵn từ console*/
+        int a_ex5_Q7;
+        do{
+            System.out.println("Xin mời nhập số chẵn ^^");
+            a_ex5_Q7 = input.nextInt();
+        } while(a_ex5_Q7 % 2 != 0);
+
+
+
+        /*Question 8:
+        Viết chương trình thực hiện theo flow sau:
+        Bước 1:
+        Chương trình in ra text "mời bạn nhập vào chức năng muốn sử
+        dụng"
+        Bước 2:
+        Nếu người dùng nhập vào 1 thì sẽ thực hiện tạo account
+        Nếu người dùng nhập vào 2 thì sẽ thực hiện chức năng tạo
+                department
+        Nếu người dùng nhập vào số khác thì in ra text "Mời bạn nhập
+        lại" và quay trở lại bước 1*/
+
+        /*Question 9:
+        Viết method cho phép người dùng thêm group vào account theo flow sau:
+        Bước 1:
+        In ra tên các usernames của user cho người dùng xem
+        Bước 2:
+        Yêu cầu người dùng nhập vào username của account
+        Bước 3:
+        In ra tên các group cho người dùng xem
+        Bước 4:
+        Yêu cầu người dùng nhập vào tên của group
+        Bước 5:
+        Dựa vào username và tên của group người dùng vừa chọn, hãy
+        thêm account vào group đó .
+                Question 10: Tiếp tục Question 8 và Question 9
+        Bổ sung thêm vào bước 2 của Question 8 như sau:
+        Nếu người dùng nhập vào 3 thì sẽ thực hiện chức năng thêm group vào
+                account
+        Bổ sung thêm Bước 3 của Question 8 như sau:
+        Sau khi người dùng thực hiện xong chức năng ở bước 2 thì in ra dòng
+        text để hỏi người dùng "Bạn có muốn thực hiện chức năng khác
+        không?". Nếu người dùng chọn "Có" thì quay lại bước 1, nếu người
+        dùng chọn "Không" thì kết thúc chương trình (sử dụng lệnh return để
+        kết thúc chương trình)*/
+        /*Question 11: Tiếp tục Question 10
+        Bổ sung thêm vào bước 2 của Question 8 như sau:
+        Nếu người dùng nhập vào 4 thì sẽ thực hiện chức năng thêm account
+        vào 1 nhóm ngẫu nhiên, chức năng sẽ được cài đặt như sau:
+        Bước 1:
+        In ra tên các usernames của user cho người dùng xem
+
+        6
+
+        Bước 2:
+        Yêu cầu người dùng nhập vào username của account
+        Bước 3:
+        Sau đó chương trình sẽ chọn ngẫu nhiên 1 group
+        Bước 4:
+        Thêm account vào group chương trình vừa chọn ngẫu
+                nhiên*/
+
+
+
+        System.out.println("______________________________Ex6 _ Question 1____________________________________ ");
+        Program obj = new Program();
+        obj.ex6_Q1();
+        System.out.println("______________________________Ex6 _ Question 2____________________________________ ");
+        account1.displayIn4();
+        System.out.println("______________________________Ex6 _ Question 3____________________________________ ");
+        obj.ex6_Q2();
+
+
+    }
+
+    /*Exercise 6 (Optional): Method
+    Question 1:
+    Tạo method để in ra các số chẵn nguyên dương nhỏ hơn 10*/
+    void ex6_Q1(){
+        for (int i=2; i<10; i=i+2)
+            System.out.print(i + " ");
+    }
+
+
+    /*Question 2:
+    Tạo method để in thông tin các account -> Đã làm ở bên class Account*/
+
+    /*Question 3:
+    Tạo method để in ra các số nguyên dương nhỏ hơn 10*/
+    void ex6_Q2(){
+        for (int i=1; i<10; i++)
+            System.out.print(i + " ");
     }
 }

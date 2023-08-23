@@ -36,4 +36,5 @@ public class Account {
     public void displayIn4_table(){
         System.out.printf("| %d |%-20s|%-15s|%-15s| %d | %d | %s |%n" ,this.accountID, this.email, this.username, this.fullName, this.departmentID, this.positionID, this.createDate);
     }
+
 }
