@@ -9,11 +9,22 @@ public class Exercise_4 {
     public static void question1(){
         Scanner input = new Scanner(System.in);
         System.out.println("Nhập chuỗi cần đếm từ"); String s1 = input.nextLine();
-        int countWord = 0;
+
+        String [] list1 = s1.split(" ");
+        ArrayList<String> list2 = new ArrayList<>();
+
+        for (String i: list1)
+            if (!i.isBlank())
+                list2.add(i);
+        System.out.println("Chuỗi s1 có " + list2.size() + " từ");
+
+
+
+        /*int countWord = 0;
         for (int i =0; i< s1.length(); i++)
             if ( s1.charAt(i) == ' ')
                 countWord++;
-        System.out.println("Chuỗi s1 có " + (countWord + 1) + " từ");
+        System.out.println("Chuỗi s1 có " + (countWord + 1) + " từ");*/
 
     }
     /*Question 2:
@@ -233,7 +244,7 @@ public class Exercise_4 {
         System.out.println("Nhập chuỗi"); String s1 = input.nextLine();
         String [] list = s1.split(" ");
         for (int i= list.length-1; i >= 0 ; i--){
-            System.out.println(list[i]);
+            System.out.println(list[i] + " ");
         }
     }
 

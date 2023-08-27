@@ -29,7 +29,7 @@ public class Main {
         //Exercise_4.question13();
         //Exercise_4.question14();
         //Exercise_4.question15();
-        //Exercise_4.question16();
+        Exercise_4.question16();
         System.out.println("_____________________________Ex5_________________________________");
         //Exercise_5.question1();
         //Exercise_5.question2();

@@ -11,8 +11,8 @@ public class Exercise_3 {
         System.out.println(b);
     }
     public static void question3(){
-        Integer a = 1234567;
-        int b =  a;
+        Integer a = new Integer("1234567");
+        int b=a;
         System.out.println(b);
     }
 }
