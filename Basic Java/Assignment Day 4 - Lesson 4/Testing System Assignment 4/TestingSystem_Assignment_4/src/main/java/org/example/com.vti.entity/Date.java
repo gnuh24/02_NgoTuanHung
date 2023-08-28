@@ -39,4 +39,8 @@ public class Date {
     public boolean isLeapYear() {
         return (year % 400 == 0) || (year % 4 == 0 && year % 100 != 0);
     }
+
+    public String toString(){
+        return  this.day+ "/" + this.month +"/" +this.year;
+    }
 }

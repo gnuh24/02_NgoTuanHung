@@ -31,4 +31,5 @@ public class Student {
         else if (this.academicPerformance > 8)
             System.out.println("Học sinh giỏi");
     }
+
 }

@@ -35,6 +35,14 @@ public class Circle {
         return this.radius*this.radius*3.1416;
     }
 
-    //toString() ???
+    public String toString(){
+        String result = "";
+
+        result += "Radius: " + this.radius + "\n";
+        result += "Color: " + this.color + "\n";
+        result += "Area: " + this.getArea() + "\n";
+
+        return result;
+    }
 
 }
