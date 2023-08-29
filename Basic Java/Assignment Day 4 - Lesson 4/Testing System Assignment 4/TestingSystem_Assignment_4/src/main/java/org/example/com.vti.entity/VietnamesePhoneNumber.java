@@ -6,23 +6,15 @@ public class VietnamesePhoneNumber extends Phone {
     public void insertContact(String name, String phone) {
         Contact newContact = new Contact(name, phone);
         this.listOfContact.add(newContact);
-        System.out.println("Thêm thành công ^^");
+        System.out.println("Add contact thành công ^^");
     }
 
     public void removeContact(String name) {
-        Contact target = null;
-
         for (Contact i: this.listOfContact)
             if (i.getName().equals(name)) {
-                target = i;
+                this.listOfContact.remove(i);
                 break;
             }
-
-        if (target != null)
-            System.out.println("Xóa thành công ^^");
-        else
-            System.out.println("Xóa thất bại, không tìm thấy đối tượng để xóa ^^");
-
     }
 
     public void updateContact(String name, String newPhone) {
@@ -38,7 +30,6 @@ public class VietnamesePhoneNumber extends Phone {
             if (i.getName().equals(name)) {
                 System.out.println("Tên: " + i.getName());
                 System.out.println("Phone: " + i.getNumber());
-
             }
     }
 }
