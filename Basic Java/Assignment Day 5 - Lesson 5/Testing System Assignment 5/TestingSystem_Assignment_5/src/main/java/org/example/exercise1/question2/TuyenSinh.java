@@ -45,6 +45,7 @@ public class TuyenSinh implements ITuyenSinh {
                     System.out.println("Khối B: " + ((StudentB) i).getSubjects());
                 else if (i instanceof StudentC)
                     System.out.println("Khối C: " + ((StudentC) i).getSubjects() );
+                break;
             }
     }
 

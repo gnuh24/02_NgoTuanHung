@@ -76,7 +76,10 @@ public class Main {
                 }
                 break;
             case 4:
+                System.out.println("Hello");
                 System.exit(0);
+            default:
+                System.out.println("Giá trị không hợp lệ");
                 break;
         }
 

@@ -41,7 +41,6 @@ public class Student implements IStudent {
         System.out.println(this.name + " đang học bài !!!");
 
     }
-
     @Override
     public void cleaningUp() {
         System.out.println(this.name + " đang dọn vệ sinh !!!");

@@ -77,7 +77,7 @@ public class Student extends Person{
     }
 
     public boolean isScholarship(){
-        return this.avgScore >= 8.0 ;
+        return this.avgScore >= 8.0 ; //this.avgScore >= 8.0 ? true: false;
     }
 
 }

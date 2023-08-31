@@ -6,10 +6,11 @@ public class MyMath {
     }
 
     public float sum(float a, float b){
+
         return a + b;
     }
 
     public byte sum(byte a, byte b){
-        return (byte) (a + b);
+        return  (byte) (a + b);
     }
 }

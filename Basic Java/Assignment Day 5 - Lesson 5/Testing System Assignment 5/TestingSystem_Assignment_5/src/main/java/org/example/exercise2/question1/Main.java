@@ -16,14 +16,17 @@ public class Main {
         Student student10 = new Student(10, "Ngô Tuấn Hưng 10", 3);
         Student [] listOfStudents = { student1, student2,student3, student4,student5 ,student6,student7,student8,student9, student10};
 
+
         //b) Kêu gọi cả lớp điểm danh.
         for(Student i: listOfStudents)
             i.rollCall();
+
 
         //c) Gọi nhóm 1 đi học bài
         for(Student i: listOfStudents)
             if (i.getGroup() == 1)
                 i.learning();
+
 
         //d) Gọi nhóm 2 đi dọn vệ sinh
         for(Student i: listOfStudents)
