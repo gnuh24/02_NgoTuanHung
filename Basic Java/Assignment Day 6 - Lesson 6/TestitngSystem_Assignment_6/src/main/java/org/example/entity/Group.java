@@ -16,7 +16,7 @@ public class Group {
         this.id =  test.inputInt("");
         this.name = test.inputString("");
         int choice = 0;
-        System.out.println("Muốn thêm thành viên mới ?");
+        System.out.println("Muốn thêm thành viên mới ? 1 / 0");
         choice = test.inputInt("");
 
             while (choice == 1) {

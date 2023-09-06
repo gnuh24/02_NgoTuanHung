@@ -13,11 +13,7 @@ public class Account {
     }
 
 
-    class InvalidAgeInputingException extends Exception{
-        public InvalidAgeInputingException(String i){
-            super(i);
-        }
-    }
+
     public int inputAge(){
         Scanner input = new Scanner(System.in);
         try {
@@ -34,3 +30,8 @@ public class Account {
     }
 }
 
+class InvalidAgeInputingException extends Exception{
+    public InvalidAgeInputingException(String i){
+        super(i);
+    }
+}

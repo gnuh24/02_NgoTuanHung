@@ -37,7 +37,7 @@ public class Exercise2 {
 
         try {
             int a = Integer.parseInt(input.nextLine());
-            if (a < 0 || a > 10 ) {
+            if (a < 0 ) {
                 throw new MyError("Wrong inputing! The age must be greater than 0, please input again.");
             }
             return a;
@@ -54,7 +54,26 @@ public class Exercise2 {
         System.out.println("Nhập lại ^^");
         return inputAge();
     }
+    public int inputAge0() {
+        Scanner input = new Scanner(System.in);
+        int a = -1;
+        while (a < 0) {
+            try {
+                a = Integer.parseInt(input.nextLine());
+                if (a < 0) {
+                    throw new MyError("Wrong inputing! The age must be greater than 0, please input again.");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("wrong inputing! Please input an age as int, input again");
+                System.out.println("Nhập lại ^^");
 
+            } catch (MyError e) {
+                System.out.println(e.getMessage());
+                System.out.println("Nhập lại ^^");
+            }
+        }
+        return a;
+    }
 
 
 }

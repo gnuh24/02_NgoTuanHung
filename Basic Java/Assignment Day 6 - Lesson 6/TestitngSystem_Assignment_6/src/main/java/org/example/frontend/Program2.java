@@ -10,8 +10,9 @@ public class Program2 {
         Exercise2 ex2 = new Exercise2();
         // ________________________Question 1 2_____________________________
 
-        /*try {
-            System.out.println(ex2.question1(7, 0));
+        /*
+        try {
+            System.out.println(ex2.question1(7, 2));
         }
         catch (Exception e){
             System.out.println(e.getMessage());
@@ -45,14 +46,14 @@ public class Program2 {
         // ________________________Question 5_____________________________
         // ________________________Question 6_____________________________
 
-            //System.out.println( ex2.inputAge() );
+            System.out.println( ex2.inputAge0() );
         // ________________________Question 9_____________________________
         //Department department1 = new Department();
         // ________________________Question 10_____________________________
         //Group group1 = new Group();
 
-        Account a = new Account();
-        System.out.println(a.inputAge());
+        /*Account a = new Account();
+        System.out.println(a.inputAge());*/
 
 
     }
