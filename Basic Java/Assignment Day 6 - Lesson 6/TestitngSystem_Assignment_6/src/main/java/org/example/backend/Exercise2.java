@@ -48,10 +48,8 @@ public class Exercise2 {
         }
 
         catch (MyError e){
-            System.out.println("Wrong inputing! The age must be greater than 0, please input again.");
+            System.out.println(e.getMessage());
         }
-
-        System.out.println("Nhập lại ^^");
         return inputAge();
     }
     public int inputAge0() {

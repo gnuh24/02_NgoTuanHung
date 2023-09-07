@@ -4,15 +4,14 @@ import org.example.backend.Exercise2;
 import org.example.entity.Account;
 import org.example.entity.Department;
 import org.example.entity.Group;
+import org.example.entity.ScannerUtils;
 
 public class Program2 {
     public static void main(String [] agrs) {
         Exercise2 ex2 = new Exercise2();
         // ________________________Question 1 2_____________________________
-
-        /*
-        try {
-            System.out.println(ex2.question1(7, 2));
+        /*try {
+            System.out.println(ex2.question1(7, 0));
         }
         catch (Exception e){
             System.out.println(e.getMessage());
@@ -46,7 +45,7 @@ public class Program2 {
         // ________________________Question 5_____________________________
         // ________________________Question 6_____________________________
 
-            System.out.println( ex2.inputAge0() );
+            //System.out.println( ex2.inputAge() );
         // ________________________Question 9_____________________________
         //Department department1 = new Department();
         // ________________________Question 10_____________________________
@@ -54,6 +53,8 @@ public class Program2 {
 
         /*Account a = new Account();
         System.out.println(a.inputAge());*/
+        /*ScannerUtils input = new ScannerUtils();
+        System.out.println(input.inputInt("^^"));*/
 
 
     }

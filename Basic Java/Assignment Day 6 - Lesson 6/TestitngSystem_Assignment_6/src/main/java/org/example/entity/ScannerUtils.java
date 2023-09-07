@@ -9,10 +9,14 @@ public class ScannerUtils {
             return Integer.parseInt(input.nextLine());
         }
         catch (Exception e){
-            System.out.println("wrong inputing! Please input an age as int, input again");
+            System.out.println(errorMessage);
         }
         return inputInt("");
     }
+
+
+
+
     public float inputFloat(String errorMessage){
         try {
             return Float.parseFloat( input.nextLine() );

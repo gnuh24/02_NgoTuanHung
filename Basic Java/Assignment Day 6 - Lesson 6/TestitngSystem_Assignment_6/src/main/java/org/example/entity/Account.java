@@ -32,6 +32,7 @@ public class Account {
 
 class InvalidAgeInputingException extends Exception{
     public InvalidAgeInputingException(String i){
+
         super(i);
     }
 }
