@@ -6,6 +6,8 @@ import org.example.entity.Department;
 import org.example.entity.Group;
 import org.example.entity.ScannerUtils;
 
+import java.util.Scanner;
+
 public class Program2 {
     public static void main(String [] agrs) {
         Exercise2 ex2 = new Exercise2();
@@ -52,10 +54,11 @@ public class Program2 {
         //Group group1 = new Group();
 
         /*Account a = new Account();
-        System.out.println(a.inputAge());*/
-        /*ScannerUtils input = new ScannerUtils();
-        System.out.println(input.inputInt("^^"));*/
+        System.out.println( a.inputAge() );*/
 
+
+        ScannerUtils input = new ScannerUtils();
+        System.out.println(input.inputInt("Lỗi nhập xuất"));
 
     }
 

@@ -16,6 +16,7 @@ public class Exercise_3 {
         try {
             if (isFileExists(pathFile))
                 throw new Exception("Error! File Exist.");
+
             File file = new File(pathFile);
             if ( file.createNewFile() )
                 System.out.println("Tạo file thành công");
@@ -24,14 +25,13 @@ public class Exercise_3 {
             System.out.println(e.getMessage());
         }
     }
-    public static void createNewFile(String pathFile, String fileName){
+    public static void createNewFile(String path, String fileName){
         try {
-            if (isFileExists(pathFile + "//" + fileName))
+            if (isFileExists(path + "\\" + fileName))
                 throw new Exception("Error! File Exist.");
-            File file = new File(pathFile + "//" + fileName);
+            File file = new File(path + "\\" + fileName); // ->> Chú ý vào OS: Mac và Linux, và '+' (Dễ xảy ra lỗi trong trường hợp dùng ký tự đặc biệt ^^
             if ( file.createNewFile() )
                     System.out.println("Tạo file thành công");
-
         }
         catch (Exception e){
             System.out.println(e.getMessage());
@@ -46,6 +46,10 @@ public class Exercise_3 {
     }
 
     public static boolean isFolder(String pathFile){
+        /*
+        File file = new File(pathFile);
+        return file.isDirectory();
+         */
         return new File(pathFile).isDirectory();
     }
 
@@ -60,9 +64,11 @@ public class Exercise_3 {
                 list.add(i);
             }
         }
+
         catch (Exception e){
             System.out.println(e.getMessage());
         }
+
         return list;
     }
 
@@ -74,7 +80,8 @@ public class Exercise_3 {
                 throw new Exception("Error! newPath has File same name.");
 
             Exercise_3.createNewFile(distinationPath, newName);
-            System.out.println("Cpoy file thành công");
+            System.out.println("Copy file thành công");
+
         }
         catch (Exception e) {
             System.out.println(e.getMessage());
@@ -87,11 +94,13 @@ public class Exercise_3 {
             if ( !Exercise_3.isFileExists(sourceFile) )
                 throw new Exception("Error! Source File Not Exist.");
 
-            String [] list = sourceFile.split("\\\\");
-            if ( Exercise_3.isFileExists( newPath + list[list.length -1]))
+            Path oldPath = Paths.get(sourceFile);
+            Path newpath = Paths.get(newPath + "\\" + oldPath.getFileName());
+
+            if ( Exercise_3.isFileExists( newpath.toString() ) )
                 throw new Exception("Error! newPath has File same name.");
 
-            Exercise_3.createNewFile(newPath + "\\" +list[list.length -1]);
+            Files.copy( oldPath, newpath);
             System.out.println("Cpoy file thành công");
         }
         catch (Exception e) {
@@ -113,6 +122,7 @@ public class Exercise_3 {
             file.renameTo(newFile);
             System.out.println("Di chuyển thành công ^^");
         }
+
         catch (Exception e){
             System.out.println(e.getMessage());
         }
@@ -120,19 +130,18 @@ public class Exercise_3 {
     }
     public static void renameFile(String pathFile, String newName){
         try {
-
             if (!Exercise_3.isFileExists(pathFile))
                 throw new Exception("Error! File Not Exist");
-            File file = new File(pathFile);
-            String [] list = pathFile.split("\\\\");
-            String result = "";
-            for (int i=0; i< list.length-1; i++){
-                result += ( list[i] + "\\") ;
-            }
-            if (Exercise_3.isFileExists(result + "\\" + newName))
+            Path oldPath = Paths.get(pathFile);
+            Path newPath = Paths.get(oldPath.getParent() + "\\" + newName);
+            File file = new File(oldPath.toString());
+
+
+
+            if (Exercise_3.isFileExists(oldPath.getParent() + "\\" + newName))
                 throw new Exception("Error! Name is Exist.");
-            File newFile = new File(result + "\\" + newName);
-            System.out.println(result + "\\" + newName);
+
+            File newFile = new File(oldPath.getParent() + "\\" + newName);
 
             file.renameTo(newFile);
             System.out.println("Đổi tên thành công ^^");

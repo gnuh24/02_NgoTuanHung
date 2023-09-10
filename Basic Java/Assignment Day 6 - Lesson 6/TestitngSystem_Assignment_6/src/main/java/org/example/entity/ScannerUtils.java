@@ -3,15 +3,19 @@ package org.example.entity;
 import java.util.Scanner;
 
 public class ScannerUtils {
-    Scanner input = new Scanner(System.in);
+    Scanner in = new Scanner(System.in);
+
     public int inputInt(String errorMessage){
         try {
-            return Integer.parseInt(input.nextLine());
+
+            //return in.nextInt();
+            return Integer.parseInt(in.nextLine());
+
         }
-        catch (Exception e){
+        catch (Exception e) {
             System.out.println(errorMessage);
         }
-        return inputInt("");
+        return inputInt(errorMessage);
     }
 
 
@@ -19,7 +23,7 @@ public class ScannerUtils {
 
     public float inputFloat(String errorMessage){
         try {
-            return Float.parseFloat( input.nextLine() );
+            return Float.parseFloat( in.nextLine() );
         }
         catch (Exception e){
             System.out.println("wrong inputing! Please input an age as float, input again");
@@ -29,7 +33,7 @@ public class ScannerUtils {
 
     public double inputDouble(String errorMessage){
         try {
-            return  input.nextDouble();
+            return  in.nextDouble();
         }
         catch (Exception e){
             System.out.println("wrong inputing! Please input an age as Double, input again");
@@ -38,7 +42,7 @@ public class ScannerUtils {
     }
 
     public String inputString(String errorMessage){
-        return input.next();
+        return in.next();
     }
 
 }
