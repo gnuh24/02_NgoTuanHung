@@ -12,6 +12,13 @@ public class Program1 {
         Exercise_1.question1_display(students);
         LinkedHashMap<Integer, String > students1 = Exercise_1.question6(students);
         System.out.println(students1);
+
+
+        Exercise_1.question2();
+
+        //Question3 tương tự question1 chỉ là thay lại thôi
+
+        Exercise_1.question7(students1);
     }
 
 

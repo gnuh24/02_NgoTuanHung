@@ -14,4 +14,12 @@ public class newStudent extends Student{
     public String toString(){
         return "(" + this.getId() + " - " + this.getName() + " - " + this.date + " - " + this.score + ")";
     }
+
+    public String getDate() {
+        return date;
+    }
+
+    public double getScore() {
+        return score;
+    }
 }
