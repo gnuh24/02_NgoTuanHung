@@ -1,8 +1,6 @@
 package org.example.entity;
 
 public class EX3_Student<T> {
-
-
         private T id;
         private String name;
 
@@ -11,14 +9,17 @@ public class EX3_Student<T> {
         }
 
         public String getName() {
+
             return name;
         }
 
         public void setId(T id) {
+
             this.id = id;
         }
 
         public T getId() {
+
             return id;
         }
 

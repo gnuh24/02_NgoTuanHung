@@ -87,6 +87,9 @@ public class Exercise_1 {
 
         System.out.println("Danh sách tới sớm nhất tới trễ nhất");
         Exercise_1.question2_earliest(testQueue);
+
+        System.out.println(testStack);
+        System.out.println(testQueue);
     }
 
     private static void question2_latest(Stack<Student> testStack){
@@ -156,3 +159,4 @@ class SortAccondingName implements Comparator<Student>{
         return a.getName().compareTo(b.getName());
     }
 }
+
