@@ -29,7 +29,9 @@ public class DepartmentDao {
         if (!resultSet.next())
             System.out.println("Cannot find department which has id = " + id);
         else {
-            System.out.println(resultSet.getInt(1) + " " + resultSet.getString(2));
+            do{
+                System.out.println(resultSet.getInt(1) + " " + resultSet.getString(2));
+            } while ( resultSet.next() );
         }
     }
 
@@ -45,10 +47,11 @@ public class DepartmentDao {
         String query = "INSERT INTO `Department`(`DepartmentName`) VALUES (?)";
         PreparedStatement preparedStatement = connection.prepareStatement(query);
         preparedStatement.setString(1, name);
-        if ( preparedStatement.executeUpdate() == 1)
+        if ( preparedStatement.executeUpdate() > 0)
             System.out.println("Create success!!");
         else System.out.println("Create fail!!");
     }
+
     public static boolean isDepartmentIDExists(Connection connection, int id) throws Exception{
         String query = "SELECT * FROM `Department` WHERE `DepartmentID` = ?";
         PreparedStatement preparedStatement = connection.prepareStatement(query);

@@ -38,7 +38,7 @@ public class Exercise_1 {
             preparedStatement = connection.prepareStatement(query);
 
             preparedStatement.setString(1, newPositionName);
-            if (preparedStatement.executeUpdate() == 1)
+            if (preparedStatement.executeUpdate() > 0)
                     System.out.println("Create Position "+ newPositionName +" success !!");
             else    System.out.println("Create Position "+ newPositionName +" fail !!");
         }
@@ -54,7 +54,7 @@ public class Exercise_1 {
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, newPositionName);
             preparedStatement.setInt(2, id);
-            if (preparedStatement.executeUpdate() == 1)
+            if (preparedStatement.executeUpdate() > 0)
                 System.out.println("Change Position success !!");
             else    System.out.println("Change Position fail !!");
         }
@@ -69,7 +69,7 @@ public class Exercise_1 {
         try{
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, id);
-            if (preparedStatement.executeUpdate() == 1)
+            if (preparedStatement.executeUpdate() > 0)
                 System.out.println("Delete Position success !!");
             else    System.out.println("Delete Position fail !!");
         }

@@ -22,9 +22,12 @@ public class Program2
             //DepartmentDao.createDepartment(connection, "Fuho");
             //DepartmentDao.updateDepartmentName(connection, 11, "Fuho");
             //DepartmentDao.deleteDepartment(connection, 13);
+            connection.close();
         }
         catch (Exception e){
             System.out.println(e.getMessage());
         }
+
+
     }
 }
