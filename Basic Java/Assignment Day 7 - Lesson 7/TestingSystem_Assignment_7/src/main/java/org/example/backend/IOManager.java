@@ -60,7 +60,7 @@ public class IOManager {
                 outputStream.writeObject(object);
             }
             else {
-                output = new FileOutputStream(path + "\\" + fileName, true);
+                output = new FileOutputStream(path + "\\" + fileName);
                 outputStream = new ObjectOutputStream(output);
                 outputStream.writeObject(object);
             }
