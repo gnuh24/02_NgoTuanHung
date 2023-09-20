@@ -21,7 +21,7 @@ public class JDBCUtils {
         Connection connection = null;
         try{
             Properties properties = new Properties();
-            properties.load( new FileInputStream("C:\\Users\\Tuan Hung\\Desktop\\Exercise\\02_NgoTuanHung\\Basic Java\\Final Exam\\FinalExam\\src\\main\\java\\org\\example\\utils\\mysql.properties"));
+            properties.load(new FileInputStream("src/main/java/org/example/utils/mysql.properties"));
             connection = DriverManager.getConnection( properties.getProperty("url"), properties.getProperty("user"), properties.getProperty("pass") );
             if (connection != null){
 
@@ -66,7 +66,7 @@ public class JDBCUtils {
         try{
             if (mySQLConnection == null || mySQLConnection.isClosed()){
                 Properties properties = new Properties();
-                properties.load( new FileInputStream("C:\\Users\\Tuan Hung\\Desktop\\Exercise\\02_NgoTuanHung\\Basic Java\\Final Exam\\FinalExam\\src\\main\\java\\org\\example\\utils\\mysql.properties"));
+                properties.load(new FileInputStream("src/main/java/org/example/utils/mysql.properties"));
                 mySQLConnection = DriverManager.getConnection( properties.getProperty("url"), properties.getProperty("user"), properties.getProperty("pass") );
                 if ( mySQLConnection != null  || mySQLConnection.isClosed() ){
                     System.out.println("Connect success!");
