@@ -1,0 +1,21 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.required{
+    color: red;
+}
+
+.ex2_question4 form > input, .space{
+    margin-bottom: 15px;
+}
+
+.ex1_question1  > h1 {
+    color: blue
+}
+
+.ex1_question1  > p {
+    color: red
+}

@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<head>
+    <meta charset = "UTF-8">
+    <link rel="stylesheet" href="vtiFE_Assignment_1.css">
+</head>
+<body>
+    <header style = "text-align: center;"><h1>TESTING SYSTEM ASSIGNMENT 1</h1></header>
+    <hr>        
+    <div class = "ex1_question1" id =  "ex1_question1">
+        <h1>Hello world!!</h1>
+        <p>My first paragraph</p>
+    </div>
+    <hr>
+    <div class = "ex2_question1" id = "ex2_question1">
+        <h1>Đây là thẻ H1</h1>
+        <h2>Đây là thẻ h2</h2>
+        <h3>Đây là thẻ h3</h3>
+
+        <h4>Đây là thẻ h4</h4>
+
+        <h5>Đây là thẻ h5</h5>
+
+        <h6>Đây là thẻ h6</h6>
+
+    </div>
+    <hr>
+    <div class = "ex2_question2" id = "ex2_question2">
+        <ol><h2 style = "font-weight: bold;">Danh sách lớp học</h2>
+            <li>Nguyễn Ngọc Duy</li>
+            <li>Tống Quang Anh</li>
+            <li>Đình Thu Loan</li>
+            <li>Hà Văn Tiến</li>
+            <li>Nguyễn Hải Đăng</li>
+            <li>Nguyễn Tiến QUang</li>
+            <li>Nguyễn Văn Chiến</li>
+        </ol>
+
+
+        <ul>
+            <h2>A list in a list in a list</h2>
+            <li>Coffee</li>
+            <li>Tea
+                <ul>
+                    <li>Black tea</li>
+                    <li>Green tea 
+                        <ul>
+                            <li>China</li>
+                            <li>Afica</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>Milk</li>
+        </ul>
+
+        <ol>
+            <li>Cơm trưa
+                <ul>
+                    <li>Cơm chiên hải sản</li>
+                    <li>Cơm sườn non nấu cam</li>
+                    <li>Cơm canh chua cá lóc</li>
+                </ul>
+            </li>
+            <li>Tráng miệng trái cây
+                <ul>
+                    <li>Nho tươi</li>
+                    <li>Chuối</li>
+                    <li>Mận</li>
+                </ul>
+            </li>
+        </ol>
+
+    </div>
+    <hr>
+    <div class="ex2_question3" id="ex2_question3">
+        <b>This text is bold</b><br>
+        <i>This text is italic</i><br>
+        <div>This is <sub>subscript</sub> and <sup>superscipt</sup></div>
+        <p>This text is normal</p>
+        <em>This text is emphasized</em>
+        <div>HTML<small>Small</small>Formatting</div>
+        <div>HTML <mark>Marked</mark> Formatting</div>
+
+        <div>The ins element represent deleted (removed) text <br>
+            My favorite <del>color</del> is red
+        </div>
+
+        <div>The ins element represent inserted (added) text <br>
+            My favorite <ins>color</ins> is red
+        </div>
+
+    </div>
+    <hr>
+    <div class ="ex2_question4" id ="ex2_question4">
+        <h2>Register</h2>
+        <div>Please <b>fill in this form </b> to create an account</div>
+        <form action="">
+            <label for="fullname">Full name <span  class="required">*</span></label><br>
+            <input type="text" id = "fullname" name = "fullnameInput" placeholder="Input your fullname..." required> <br>
+
+            <label for="username">Username <span  class="required">*</span></label><br>
+            <input type="text" id = "username" name = "usernameInput" placeholder="Input your username..." required> <br>
+
+            <label for="password">Password <span  class="required">*</span></label><br>
+            <input type="password" id = "password" name = "passwordInput" placeholder="Input your password..." required> <br>
+           
+            <label for="email">Email <span  class="required">*</span></label><br>
+            <input type="email" id = "email" name = "emailInput" placeholder="Input your email..." required> <br>
+            
+            <label for="phoneNumber">Password <span  class="required">*</span></label><br>
+            <input type="number" id = "phoneNumber" name = "phoneNumberInput" placeholder="Input your phone number..." required> <br>
+
+            <div class = "space">Input Object <br>
+                <input type="radio" id = "student" name ="inputObject" value = "Student">
+                <label for="student">Student</label>
+
+                <input type="radio" id = "teacher" name ="inputObject" value = "Teacher">
+                <label for="student">Teacher</label>
+
+            </div>
+            
+            <div class="space">Favorite <br>
+                <input type="checkbox" id="badminton" name = "favorite">
+                <label for="badminton" >Badminton</label>
+
+                <input type="checkbox" id="volleyball" name = "favorite">
+                <label for="volleyball" >Volleyball</label>
+
+                <input type="checkbox" id="football" name = "favorite">
+                <label for="football" >Football</label>
+
+            </div>
+
+            <label for="address">Address <span  class="required">*</span></label><br>
+            <input list = "listAddress" id ="address"><br>
+            <datalist id = "listAddress">
+                <option value="Bắc Giang"></option>
+                <option value="TP Hồ Chí Minh"></option>
+                <option value="Đà Nẵng"></option>
+            </datalist>
+
+            <label for="date">Birthday <span  class="required">*</span></label><br>
+            <input type="date" id = "date" name = "dateInput" placeholder="mm/dd/yyyy" required> <br>
+
+            <label for="picture">Your picture <span  class="required">*</span></label><br>
+            <input type="file" id = "picture" name = "pictureInput" required> <br>
+
+            <input type="submit" value = "Đăng ký">
+        </form>
+    </div>
+    <hr>
+    <div class="ex3_question2" id="ex3_question2">
+        <div style ="background: tomato; margin-bottom: 5px">Tomato</div>
+        <div style ="background: orange; margin-bottom: 5px">Orange</div>
+        <div style ="background: DodgerBlue; margin-bottom: 5px">DodgerBlue</div>
+        <div style ="background: MediumSeaGreen; margin-bottom: 5px">MediumSeaGreen</div>
+        <div style ="background: Gray; margin-bottom: 5px">Gray</div>
+        <div style ="background: SlateBlue; margin-bottom: 5px">SlateBlue</div>
+        <div style ="background: Violet; margin-bottom: 5px">Violet</div>
+        <div style ="background: LightGray; margin-bottom: 5px">LightGray</div>
+        <div style ="border: 2px solid orange; margin-bottom: 5px">  Hello world!</div>
+        <div style ="border: 2px solid blue; margin-bottom: 5px">  Hello world</div>
+        <div style ="border: 2px solid pink; margin-bottom: 5px">  Hello world</div>
+    </div>
+    <hr>
+    <div class="ex3_question3" id="ex3_question3">
+        <table border = "1" style="margin-top: 20px">
+            <tr>
+                <th>Họ và tên</th>
+                <th>Ngày sinh</th>
+                <th>Giới tính</th>
+            </tr>
+            <tr>
+                <td>Trần Anh Đức</td>
+                <td>03/08/1993</td>
+                <td>Nam</td>
+            </tr>
+            <tr>
+                <td>Kiều Thị Thu Hằng</td>
+                <td>04/09/1991</td>
+                <td>Nữ</td>
+            </tr>
+            <tr>
+                <td>Vương Thị Lê Na</td>
+                <td>06/10/1991</td>
+                <td>Nữ</td>
+            </tr>
+        </table>
+        <table border = "1" style="margin-top: 20px">
+            <tr>
+                <th rowspan = "2">STT</th>
+                <th rowspan = "2">Họ tên</th>
+                <th colspan="2">Giới tính</th>
+                <th rowspan = "2">Chức vụ</th>
+            </tr>
+            <tr>
+                <th>Nam</th>
+                <th>Nữ</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Trần Đức Anh</td>
+                <td>X</td>
+                <td></td>
+                <td>Lớp Trưởng</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Kiều Thị Thu Hằng</td>
+                <td></td>
+                <td>X</td>
+                <td>Lớp phó</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Vương Thị Lê Na</td>
+                <td></td>
+                <td>X</td>
+                <td>Lớp phó</td>
+            </tr>
+        </table>
+        <table border = "1" style="margin-top: 20px">
+            <tr>
+                <th>STT</th>
+                <th>Họ tên</th>
+                <th>GVHD</th>
+                <th>Lịch gặp GVHD</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Nguyễn Lê Thu Trang</td>
+                <td rowspan = "3">Th.S Hồ Sỹ Tuy Đức</td>
+                <td rowspan = "3">08/03/2018</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Nguyễn Thị Diễm</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Phạm Thị Hồng Đào</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Nguyễn Thị Kim Sa</td>
+                <td rowspan = "2">Th.S Phạm Thi Huyền Quyên</td>
+                <td rowspan = "2">05/03/2018</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Lê Thị Trang</td>
+            </tr>
+        </table>
+        <table border = "1" style="margin-top: 20px">
+            <tr>
+                <th colspan = 2>Bảng điểm lớp 9B</th>
+                <th rowspan = 2>Toán</th>
+                <th rowspan = 2>Lý</th>
+                <th rowspan = 2>Hóa</th>
+            </tr>
+            <tr>
+                <th>STT</th>
+                <th>Họ tên</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Trần Đức Anh</td>
+                <td>8.5</td>
+                <td>3.0</td>
+                <td>7.75</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Kiều Thị Thu Hằng</td>
+                <td>10</td>
+                <td>9.25</td>
+                <td>5.75</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Vương Thị Lê Na</td>
+                <td>2.25</td>
+                <td>6.0</td>
+                <td>7.75</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td colspan = 4>Điểm trung bình cả lớp</td>
+            </tr>
+        </table>
+    </div>
+    
+    <hr>
+    <div class="ex4_question2" id="ex4_question2">
+        <table border="1">
+            <tr>
+                <th>Exercise</th>
+                <th>Link</th>
+            </tr>
+            <tr>
+                <td>Exercise 1</td>
+                <td><a href="#ex1_question1">Question 1</a></td>
+            </tr>
+            <tr>
+                <td rowspan = 4>Exercise 2</td>
+                <td> <a href="#ex2_question1">Question 1</a></td>
+            </tr>
+            <tr>
+                <td> <a href="#ex2_question2">Question 2</a></td>
+
+            </tr>
+            <tr>
+                <td> <a href="#ex2_question3">Question 3</a></td>
+
+            </tr>
+            <tr>
+                <td> <a href="#ex2_question4">Question 4</a></td>
+
+            </tr>
+            <tr>
+                <td rowspan = 3>Exercise 3</td>
+                <td> <a href="#ex3_question1">Question 1</a></td>
+            </tr>
+            <tr>        
+                <td> <a href="#ex3_question2">Question 2</a></td>
+            </tr>
+            <tr>    
+                <td> <a href="#ex3_question3">Question 3</a></td>
+            </tr>
+            <tr>
+                <td rowspan = 2>Exercise 4</td>
+                <td> <a href="#ex4_question1">Question 1</a></td>
+            </tr>
+            <tr>
+                <td> <a href="#ex4_question2">Question 2</a></td>
+
+            </tr>
+        </table>
+    </div>
+    <hr>
+</body>
