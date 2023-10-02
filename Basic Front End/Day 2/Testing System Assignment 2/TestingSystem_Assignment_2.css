@@ -1,0 +1,75 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.container{
+    border: 2px solid blue;
+    width: 400px;
+    height: 400px;
+    margin: 100px auto;
+}
+
+.box{
+    width: 100px;
+    height: 100px;
+    background-color: red;
+}
+
+
+
+/* HÌNH VUÔNG NẰM NGOÀI
+.container{
+    border: 2px solid blue;
+    width: 400px;
+    height: 400px;
+    margin: 100px auto;
+}
+
+.box{
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    position: relative;
+    top: -100px;
+    left: 150px;
+} */
+
+/*HÌNH VUÔNG NẰM CHÉO GÓC
+.container{
+    border: 2px solid blue;
+    width: 400px;
+    height: 400px;
+    margin: 100px auto;
+}
+
+.box{
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    position: relative;
+    top: 300px;
+    left: 300px;
+}*/
+
+
+
+/*HÌNH VUÔNG NẰM GIỮA
+.container{
+    border: 2px solid blue;
+    width: 400px;
+    height: 400px;
+    margin: 100px auto;
+}
+
+.box{
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    position: relative;
+    top: 150px;
+    left: 150px;
+} */
+
