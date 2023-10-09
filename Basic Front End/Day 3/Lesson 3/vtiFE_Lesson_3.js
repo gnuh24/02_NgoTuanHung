@@ -21,5 +21,6 @@
 
 // let person1 = new Person("Suifeng", 19);
 // person1.speak;
-for (let i=0; i<10; i++);
-console.log(i);
+console.log(new Date().getDate());
+
+
