@@ -15,7 +15,7 @@ Array.from(auPassElements).forEach(function(element) {
 });
 
 function swap(){
-    document.write("Bạn vừa nhập ký tự mới ^^");
+    var temp = 
 }
 
 

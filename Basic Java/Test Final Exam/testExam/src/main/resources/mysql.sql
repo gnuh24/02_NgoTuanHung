@@ -26,3 +26,13 @@ VALUES 				('Nguyen Khanh 1'		,'nguyenkhanh1@gmail.com'		, 'abcd1234A'		, NULL		
                     ('Nguyen Khanh 8'		,'nguyenkhanh8@gmail.com'		, 'abcd1234B'			, NULL				, 'csharp'			, '2'				, 'EMPLOYEE'),
                     ('Nguyen Khanh 9'		,'nguyenkhanh9@gmail.com'		, 'abcd1234B'			, NULL				, 'html'			, '2'				, 'EMPLOYEE'),
                     ('Nguyen Khanh 10'		,'nguyenkhanh10@gmail.com'		, 'abcd1234B'			, NULL				, 'css'				, '2'				, 'EMPLOYEE');
+
+SELECT * FROM User 
+WHERE projectid = ?
+ORDER BY `role`;
+
+SELECT * FROM User 
+WHERE role = "MANAGER";
+
+SELECT * FROM User
+WHERE email = ? AND password = ?;

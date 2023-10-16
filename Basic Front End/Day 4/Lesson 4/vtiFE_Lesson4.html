@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/Lesson 4/bootstrap-5.3.2-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/Lesson 4/vtiFE_Lesson4.css">
+    <title>VTI FE LESSON 4</title>
+</head>
+<body>
+    <header><h1>VTI FE LESSON 4</h1></header>
+    <button type="button" class="btn btn-primary" id="btn-addNew">Thêm</button>    <table class="table table-dark">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Name</th>
+          <th scope="col">Phone</th>
+          <th scope="col">Ingame</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+      </tbody>
+    </table>
+    
+    <div class="info-container" id="myModal">
+      <button id="btn-hide" type="button" class="btn btn-danger">X</button>      
+      <h2>Thông Tin Người Chơi</h2>
+
+      <form id="info-form">
+          <label for="hoTen">Họ Tên:</label>
+          <input type="text" id="hoTen" name="hoTen" required>
+
+          <label for="soDienThoai">Số Điện Thoại:</label>
+          <input type="number" id="soDienThoai" name="soDienThoai" required>
+
+          <label for="tenIngame">Tên Ingame:</label>
+          <input type="text" id="tenIngame" name="tenIngame" required>
+
+          <button id="btn-send" type="submit">Gửi</button>
+      </form>
+  </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="/Lesson 4/vtiFE_Lesson4.js"> </script>
+</body>
+</html>
