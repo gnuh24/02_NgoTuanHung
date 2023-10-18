@@ -34,7 +34,6 @@ public class Account implements Serializable{
 			unique=true,
 			updatable=false)
 	private String username;
-	
 	@Column (name="firstname",
 			length=50,
 			nullable=false)
@@ -67,8 +66,6 @@ public class Account implements Serializable{
 		this.lastname = lastname;
 		this.createDate = createDate;
 	}
-
-
 
 
 
