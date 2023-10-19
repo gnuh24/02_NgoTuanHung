@@ -22,23 +22,6 @@ import entity.TypeQuestion.TypeName;
 public class Program {
 
 	
-	public static void main(String[] args) {
-		SalaryRepository repository = new SalaryRepository();
-		System.out.println(repository.getAllSalaries());
-		Salary salary = new Salary(SalaryName.SCRUM_MASTER);
-		repository.createSalary(salary);
-		System.out.println(repository.getAllSalaries());
-
-		
-
-
-
-		
-		
-		
-
-
-
-		
+	public static void main(String[] args) {	
 	}	
 }

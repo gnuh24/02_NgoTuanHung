@@ -75,6 +75,8 @@ public class Exam implements Serializable{
 			 else code2 = "S-1";
 		 }
 	 }
+	 
+	 
 
 	public short getExamID() {
 		return examID;
