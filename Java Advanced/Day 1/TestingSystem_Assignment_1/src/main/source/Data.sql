@@ -55,7 +55,7 @@ VALUES 				(N'Testing System'		,'2019-03-05'),
 
 -- Add data TypeQuestion
 INSERT INTO TypeQuestion	(TypeName	) 
-VALUES 						('0'), 
+VALUES 						('0'),
 							('1'); 
 
 
