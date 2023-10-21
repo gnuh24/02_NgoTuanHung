@@ -8,6 +8,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -39,6 +42,56 @@ public class Question implements Serializable{
 			createDate = new Date();
 		}
 	}
+	
+	@ManyToOne
+	@JoinColumn(name = "CategoryID", nullable = false)
+	private CategoryQuestion categoryQuestion;
+	
+	@ManyToOne
+	@JoinColumn(name = "TypeID", nullable = false)
+	private TypeQuestion typeQuestion;
+	
+	@OneToOne
+	@JoinColumn(name = "CreatorID", nullable = false, referencedColumnName = "AccountID", unique = true)
+	private Account creator;
+
+	
+	
+	public CategoryQuestion getCategoryQuestion() {
+		return categoryQuestion;
+	}
+
+
+
+	public void setCategoryQuestion(CategoryQuestion categoryQuestion) {
+		this.categoryQuestion = categoryQuestion;
+	}
+
+
+
+	public TypeQuestion getTypeQuestion() {
+		return typeQuestion;
+	}
+
+
+
+	public void setTypeQuestion(TypeQuestion typeQuestion) {
+		this.typeQuestion = typeQuestion;
+	}
+
+
+
+	public Account getCreator() {
+		return creator;
+	}
+
+
+
+	public void setCreator(Account creator) {
+		this.creator = creator;
+	}
+
+
 
 	public Question() {
 		super();

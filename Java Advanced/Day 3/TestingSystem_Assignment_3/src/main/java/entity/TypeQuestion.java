@@ -1,15 +1,19 @@
 package entity;
 
 import java.io.Serializable;
+import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -31,8 +35,41 @@ public class TypeQuestion implements Serializable{
 	@Convert(converter = TypeQuestionConverter.class)
 	private TypeName typeName;
 	
+	/*__________________________________________Question____________________________________*/
+	@OneToMany(mappedBy = "typeQuestion", fetch = FetchType.EAGER)
+	private List<Question> listOfQuestion;
+	
+	public List<Question> getListOfQuestion() {
+		return listOfQuestion;
+	}
+
+	public void setListOfQuestion(List<Question> listOfQuestion) {
+		this.listOfQuestion = listOfQuestion;
+	}
 	
 	
+	
+	
+	
+	
+	
+	
+	public short getTypeId() {
+		return typeId;
+	}
+
+
+
+	public void setTypeId(short typeId) {
+		this.typeId = typeId;
+	}
+
+
+
+	
+
+
+
 	public TypeQuestion() {
 		super();
 	}

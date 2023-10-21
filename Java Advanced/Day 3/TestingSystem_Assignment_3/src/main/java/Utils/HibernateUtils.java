@@ -29,30 +29,38 @@ public class HibernateUtils {
 		configuration.configure("hibernate.cfg.xml");
 		
 		
-		configuration.addAnnotatedClass(Address.class);
-		configuration.addAnnotatedClass(Department.class);
-		configuration.addAnnotatedClass(DetailDepartment.class);
 		configuration.addAnnotatedClass(Position.class);
 		configuration.addAnnotatedClass(Salary.class);
 		configuration.addAnnotatedClass(Account.class);
+	
+		configuration.addAnnotatedClass(Group.class);
+		
+		configuration.addAnnotatedClass(Question.class);
+		configuration.addAnnotatedClass(TypeQuestion.class);
+		configuration.addAnnotatedClass(CategoryQuestion.class);
+		
+		
 
-
+		//Dùng Inheritance
+		configuration.addAnnotatedClass(DetailDepartment.class);
+		configuration.addAnnotatedClass(Address.class);
+		configuration.addAnnotatedClass(Department.class);
+		configuration.addAnnotatedClass(Employee.class);
+		configuration.addAnnotatedClass(Manager.class);
+		
+		//configuration.addAnnotatedClass(GroupAccount.class);
+		//configuration.addAnnotatedClass(ExamQuestion.class);
+		
 		//Add entity
 		
 		configuration.addAnnotatedClass(Answer.class);
-
-		configuration.addAnnotatedClass(CategoryQuestion.class);
 		
 
 		configuration.addAnnotatedClass(Exam.class);
 
-		configuration.addAnnotatedClass(Group.class);
 
 
-		configuration.addAnnotatedClass(Question.class);
-
-
-		configuration.addAnnotatedClass(TypeQuestion.class);
+		
 
 
 	}

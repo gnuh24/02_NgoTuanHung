@@ -16,8 +16,8 @@ public class DemoAccount {
 //		for (Account d : accountTest.getAllAccount()) {
 //			System.out.println(d);
 //		}
-//		
-//		
+		
+		
 //		DepartmentRepository departmentTest = new DepartmentRepository();
 //		for (Department d : departmentTest.getAllDepartment()) {
 //			System.out.println(d);
@@ -25,7 +25,7 @@ public class DemoAccount {
 //				System.out.println(a.getUsername());
 //			}
 //		}
-//		
+		
 //		// Test cases for SalaryRepository
 //		SalaryRepository salaryTest = new SalaryRepository();
 //		for (Salary s : salaryTest.getAllSalaries()) {
@@ -34,7 +34,7 @@ public class DemoAccount {
 //				System.out.println(a.getUsername());
 //			}
 //		}
-//
+
 //		// Test cases for PositionRepository
 //		PositionRepository positionTest = new PositionRepository();
 //		for (Position p : positionTest.getAllPositions()) {

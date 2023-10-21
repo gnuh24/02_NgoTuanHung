@@ -158,3 +158,14 @@ CREATE TABLE ExamQuestion(
 );
 
 
+select t1.*, t2.*
+FROM question t1 JOIN typequestion t2 ON t1.TypeID = t2.TypeID;
+
+select t1.*, t2.*
+FROM question t1 JOIN categoryquestion t2 ON t1.CategoryID = t2.CategoryID;
+
+select t1.*, t2.*
+FROM question t1 JOIN account t2 ON t1.CreatorID = t2.AccountID;
+
+INSERT INTO Question (Content, CategoryID, TypeID, CreatorID, CreateDate)
+VALUE ("Câu hỏi về .NET", 8, 2, 8, NOW() );

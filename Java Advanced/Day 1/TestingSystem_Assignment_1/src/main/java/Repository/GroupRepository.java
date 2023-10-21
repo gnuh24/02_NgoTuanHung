@@ -31,7 +31,6 @@ public class GroupRepository {
 	    }
 	}
 	
-	@SuppressWarnings("unchecked")
 	public Group getGroupByID(short id) {
 		Session session = null;
 	    try {
@@ -66,7 +65,6 @@ public class GroupRepository {
 	    }
 	}
 	
-	@SuppressWarnings("unchecked")
 	public void createGroup(Group newGroup) {
 
 		Session session = null;

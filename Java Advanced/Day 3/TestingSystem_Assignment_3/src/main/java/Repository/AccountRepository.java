@@ -59,7 +59,6 @@ public class AccountRepository {
         }
     }
     
-	@SuppressWarnings("unchecked")
     public void createAccount(Account account) {
     	Session session = null;
         try {

@@ -1,13 +1,21 @@
 package entity;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -68,6 +76,44 @@ public class Account implements Serializable{
 	@JoinColumn(name = "SalaryID")
 	private Salary salary;
 	
+	@OneToOne (mappedBy = "account")
+	private Employee employee;
+	
+	@OneToOne (mappedBy = "accountID")
+	private Manager manager;
+	
+	
+	
+	/*___________________________________________GROUP___________________________________________*/
+	@OneToMany (mappedBy = "creator" ,fetch = FetchType.EAGER)
+	private List <Group> ListOfGroup;
+	
+	
+	public List<Group> getListOfGroup() {
+		return ListOfGroup;
+	}
+
+	public void setListOfGroup(List<Group> listOfGroup) {
+		ListOfGroup = listOfGroup;
+	}
+
+	
+	/*__________________________________________Question____________________________________*/
+	@OneToOne(mappedBy = "creator", fetch = FetchType.EAGER)
+	private Question question;
+	
+	
+	
+	
+	public Question getQuestion() {
+		return question;
+	}
+
+	public void setQuestion(Question question) {
+		this.question = question;
+	}
+
+	/*______________________________________PrePersist__________________________________*/
 	@PrePersist
 	public void prePersist() {
 		if (createDate == null) {
@@ -91,6 +137,70 @@ public class Account implements Serializable{
 	}
 	
 	
+	
+	
+
+
+	public Department getDepartment() {
+		return department;
+	}
+
+
+
+	public void setDepartment(Department department) {
+		this.department = department;
+	}
+
+
+
+	public Position getPosition() {
+		return position;
+	}
+
+
+
+	public void setPosition(Position position) {
+		this.position = position;
+	}
+
+
+
+	public Salary getSalary() {
+		return salary;
+	}
+
+
+
+	public void setSalary(Salary salary) {
+		this.salary = salary;
+	}
+
+
+
+	public Manager getManager() {
+		return manager;
+	}
+
+
+
+	public void setManager(Manager manager) {
+		this.manager = manager;
+	}
+
+
+
+	public Employee getEmployee() {
+		return employee;
+	}
+
+
+
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
+	}
+
+
+
 	public Account(short accountID, String email, String username, String firstname, String lastname, Date createDate) {
 		super();
 		this.accountID = accountID;

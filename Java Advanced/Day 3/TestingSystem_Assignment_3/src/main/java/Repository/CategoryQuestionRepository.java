@@ -58,7 +58,6 @@ public class CategoryQuestionRepository {
         }
     }
     
-    @SuppressWarnings("unchecked")
     public void createCategoryQuestion(CategoryQuestion categoryQuestion) {
         Session session = null;
         try {

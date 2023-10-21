@@ -1,11 +1,15 @@
 package entity;
 
 import java.io.Serializable;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -24,6 +28,22 @@ public class CategoryQuestion implements Serializable{
 			nullable=false,
 			unique=true)
 	private String categoryName;
+	
+	/*__________________________________________Question____________________________________*/
+	@OneToMany (mappedBy = "categoryQuestion" ,fetch = FetchType.EAGER)
+	private List <Question> ListOfQuestion;
+	
+	public List<Question> getListOfQuestion() {
+		return ListOfQuestion;
+	}
+
+	public void setListOfQuestion(List<Question> listOfQuestion) {
+		ListOfQuestion = listOfQuestion;
+	}
+	
+	
+	
+	
 
 	public CategoryQuestion() {
 	}
