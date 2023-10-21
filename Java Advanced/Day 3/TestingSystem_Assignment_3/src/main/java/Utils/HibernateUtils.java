@@ -32,9 +32,12 @@ public class HibernateUtils {
 		configuration.addAnnotatedClass(Address.class);
 		configuration.addAnnotatedClass(Department.class);
 		configuration.addAnnotatedClass(DetailDepartment.class);
+		configuration.addAnnotatedClass(Position.class);
+		configuration.addAnnotatedClass(Salary.class);
+		configuration.addAnnotatedClass(Account.class);
+
 
 		//Add entity
-		configuration.addAnnotatedClass(Account.class);
 		
 		configuration.addAnnotatedClass(Answer.class);
 
@@ -45,11 +48,9 @@ public class HibernateUtils {
 
 		configuration.addAnnotatedClass(Group.class);
 
-		configuration.addAnnotatedClass(Position.class);
 
 		configuration.addAnnotatedClass(Question.class);
 
-		configuration.addAnnotatedClass(Salary.class);
 
 		configuration.addAnnotatedClass(TypeQuestion.class);
 

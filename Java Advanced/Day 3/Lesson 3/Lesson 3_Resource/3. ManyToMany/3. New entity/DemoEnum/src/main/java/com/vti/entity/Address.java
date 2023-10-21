@@ -27,6 +27,8 @@ public class Address implements Serializable {
 
 	@Column(name = "city", length = 50, nullable = false)
 	private String city;
+	
+	
 
 	@OneToMany(mappedBy = "address")
 	private List<UserAddress> userAddresses;

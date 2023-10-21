@@ -1,12 +1,15 @@
 package entity;
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -25,11 +28,25 @@ public class Salary implements Serializable{
 			nullable=false,
 			unique=true)
 	@Convert(converter = SalaryNameConverter.class)
-
 	private SalaryName salaryName;
 
+	@OneToMany (mappedBy = "salary", fetch = FetchType.EAGER)
+	 private List<Account> listOfAccount;
+	
 	public Salary() {
 		super();
+	}
+
+
+
+	public List<Account> getListOfAccount() {
+		return listOfAccount;
+	}
+
+
+
+	public void setListOfAccount(List<Account> listOfAccount) {
+		this.listOfAccount = listOfAccount;
 	}
 
 

@@ -12,14 +12,16 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "DetailDepartment")
 public class DetailDepartment implements Serializable{
-	@Id
-	@OneToOne
-	@JoinColumn (name = "DepartmentID")
-	private Department department;
 	
-	@OneToOne 
-	@JoinColumn (name = "DepartmentID", unique = true, nullable = false)
-	private Address address;
+	
+		@Id
+	 	@OneToOne
+	    @JoinColumn(name = "DepartmentID")
+	    private Department department;
+	    
+	    @OneToOne
+	    @JoinColumn(name = "AddressID", unique = true, nullable = false)
+	    private Address address;
 	
 	
 	@Column(name = "EmulationPoint")

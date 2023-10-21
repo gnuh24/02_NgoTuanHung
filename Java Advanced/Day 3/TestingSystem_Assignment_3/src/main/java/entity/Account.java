@@ -6,10 +6,18 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import Repository.DepartmentRepository;
+import Repository.PositionRepository;
+import Repository.SalaryRepository;
+import entity.Position.PositionName;
+import entity.Salary.SalaryName;
 
 @Entity
 @Table (name = "Account")
@@ -48,11 +56,37 @@ public class Account implements Serializable{
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date createDate;
 	
+	@ManyToOne
+	@JoinColumn(name = "DepartmentID")
+	private Department department;
+	
+	@ManyToOne
+	@JoinColumn(name = "PositionID")
+	private Position position;
+	
+	@ManyToOne
+	@JoinColumn(name = "SalaryID")
+	private Salary salary;
 	
 	@PrePersist
 	public void prePersist() {
 		if (createDate == null) {
 			createDate = new Date();
+		}
+		
+		if (department == null) {
+			DepartmentRepository newDPM = new DepartmentRepository();
+			department = newDPM.getDepartmentByName("Waiting");
+		}
+		
+		if (position == null) {
+			PositionRepository newPSS = new PositionRepository();
+			position = newPSS.getPositionByName(PositionName.Dev);
+		}
+		
+		if (salary == null) {
+			SalaryRepository newS = new SalaryRepository();
+			salary = newS.getSalaryByName(SalaryName.DEV);
 		}
 	}
 	
@@ -154,12 +188,20 @@ public class Account implements Serializable{
 	}
 
 
-
 	@Override
 	public String toString() {
-		return "Account [accountID=" + accountID + ", email=" + email + ", username=" + username +
-			", fullname=" + firstname+ " " +lastname + ", createDate=" + createDate + "]";
+	    return String.format("Account [\n  accountID=%d,\n  email=%s,\n  username=%s,\n  firstname=%s,\n  lastname=%s, "
+	                        + "\n  createDate=%s,\n  department=%s,\n  position=%s,\n  salary=%s\n]",
+	                        accountID, email, username, firstname, lastname, createDate,
+	                        department != null ? department.getDepartmentName() : null,
+	                        position != null ? position.getPositionName() : null,
+	                        salary != null ? salary.getSalaryName() : null);
 	}
+
+
+
+
+
 	
 	
 	

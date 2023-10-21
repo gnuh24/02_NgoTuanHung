@@ -17,7 +17,7 @@ public class PositionRepository {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<Position> getAllPosition(){
+	public List<Position> getAllPositions(){
 		Session session = null;
 		try {
 			session = hibernateUtils.openSession();

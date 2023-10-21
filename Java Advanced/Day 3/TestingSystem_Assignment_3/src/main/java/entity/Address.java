@@ -51,9 +51,13 @@ public class Address implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Address [addressID=" + addressID + ", addressName=" + addressName + ", AddressName="
-				+ detailDepartment.getDepartment().getDepartmentName() + "]";
+	    String departmentName = (detailDepartment != null && detailDepartment.getDepartment() != null)
+	            ? detailDepartment.getDepartment().getDepartmentName()
+	            : "N/A";
+
+	    return "Address [addressID=" + addressID + ", addressName=" + addressName + ", departmentName=" + departmentName + "]";
 	}
+
 
 
 

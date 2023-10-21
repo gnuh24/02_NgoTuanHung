@@ -156,3 +156,5 @@ CREATE TABLE ExamQuestion(
     FOREIGN KEY(ExamID) REFERENCES Exam(ExamID),
     PRIMARY KEY (ExamID,QuestionID)
 );
+
+
