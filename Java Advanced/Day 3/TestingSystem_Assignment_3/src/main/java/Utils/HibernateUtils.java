@@ -39,7 +39,9 @@ public class HibernateUtils {
 		configuration.addAnnotatedClass(TypeQuestion.class);
 		configuration.addAnnotatedClass(CategoryQuestion.class);
 		
-		
+		configuration.addAnnotatedClass(Answer.class);
+		configuration.addAnnotatedClass(Exam.class);
+
 
 		//Dùng Inheritance
 		configuration.addAnnotatedClass(DetailDepartment.class);
@@ -53,11 +55,7 @@ public class HibernateUtils {
 		
 		//Add entity
 		
-		configuration.addAnnotatedClass(Answer.class);
 		
-
-		configuration.addAnnotatedClass(Exam.class);
-
 
 
 		

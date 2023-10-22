@@ -34,5 +34,10 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<version>8.0.20</version>
 		</dependency>
+		<dependency>
+			<groupId>com.vti</groupId>
+			<artifactId>DemoConfigHibernate</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
   </dependencies>
 </project>

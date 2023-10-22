@@ -169,3 +169,6 @@ FROM question t1 JOIN account t2 ON t1.CreatorID = t2.AccountID;
 
 INSERT INTO Question (Content, CategoryID, TypeID, CreatorID, CreateDate)
 VALUE ("Câu hỏi về .NET", 8, 2, 8, NOW() );
+
+select t1.*, t2.*
+FROM exam t1 JOIN `account` t2 ON t1.creatorID = t2.accountID; 

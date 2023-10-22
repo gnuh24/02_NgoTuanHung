@@ -12,6 +12,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 @Entity
 @Table (name="CategoryQuestion")
 
@@ -30,7 +33,8 @@ public class CategoryQuestion implements Serializable{
 	private String categoryName;
 	
 	/*__________________________________________Question____________________________________*/
-	@OneToMany (mappedBy = "categoryQuestion" ,fetch = FetchType.EAGER)
+	@OneToMany (mappedBy = "categoryQuestion" )
+	//@LazyCollection(LazyCollectionOption.FALSE)
 	private List <Question> ListOfQuestion;
 	
 	public List<Question> getListOfQuestion() {
@@ -41,8 +45,20 @@ public class CategoryQuestion implements Serializable{
 		ListOfQuestion = listOfQuestion;
 	}
 	
+	/*___________________________________EXAM_____________________________________*/
+	@OneToMany(mappedBy = "creator")
+	private List<Exam> listOfExam;
 	
 	
+
+	public List<Exam> getListOfExam() {
+		return listOfExam;
+	}
+
+	public void setListOfExam(List<Exam> listOfExam) {
+		this.listOfExam = listOfExam;
+	}
+//	
 	
 
 	public CategoryQuestion() {

@@ -21,6 +21,9 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import Repository.DepartmentRepository;
 import Repository.PositionRepository;
 import Repository.SalaryRepository;
@@ -111,6 +114,21 @@ public class Account implements Serializable{
 
 	public void setQuestion(Question question) {
 		this.question = question;
+	}
+	
+	/*___________________________________EXAM_____________________________________*/
+	@OneToMany(mappedBy = "creator")
+	//@LazyCollection(LazyCollectionOption.FALSE)
+	private List<Exam> listOfExam;
+	
+	
+
+	public List<Exam> getListOfExam() {
+		return listOfExam;
+	}
+
+	public void setListOfExam(List<Exam> listOfExam) {
+		this.listOfExam = listOfExam;
 	}
 
 	/*______________________________________PrePersist__________________________________*/

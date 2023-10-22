@@ -5,9 +5,12 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -25,15 +28,11 @@ public class Exam implements Serializable{
 	 @GeneratedValue(strategy = GenerationType.IDENTITY)
 	 private short examID;
 	 
-	 @Column(name="code1",
+	 @Column(name="code",
 			 length = 10,
 			 updatable = false)
-	 private String code1;
+	 private String code;
 	 
-	 @Column(name="code2",
-			 length = 10,
-			 updatable = false)
-	 private String code2;
 	 
 	 @Column(name = "title",
 			 length = 50,
@@ -50,30 +49,57 @@ public class Exam implements Serializable{
 	 @Temporal(TemporalType.TIMESTAMP)
 	 private Date createDate;
 	 
-	 @PrePersist
+	 
+	 @ManyToOne
+	 @JoinColumn(name = "CategoryID", nullable = false)
+	 private CategoryQuestion categoryQuestion;
+	 
+	 @ManyToOne
+	 @JoinColumn(name = "CreatorID", nullable = false, updatable = false)
+	 private Account creator;
+	 
+	 
+	 
+	 public CategoryQuestion getCategoryQuestion() {
+		return categoryQuestion;
+	}
+
+
+
+	public void setCategoryQuestion(CategoryQuestion categoryQuestion) {
+		this.categoryQuestion = categoryQuestion;
+	}
+
+
+
+	public Account getCreator() {
+		return creator;
+	}
+
+
+
+	public void setCreator(Account creator) {
+		this.creator = creator;
+	}
+
+
+
+	@PrePersist
 	 public void prePersist() {
 		 if (createDate == null) {
 			 createDate = new Date();
 		 }
-		 if (code1 == null) {
+		 if (code == null) {
 			 if (duration >= 180) {
-				 code1 = "L-1";
+				 code = "L-1";
 			 }
 			 else if (duration >= 90) {
-				 code1 = "M-1";
+				 code = "M-1";
 			 }
-			 else code1 = "S-1";
+			 else code = "S-1";
 		 }
 		 
-		 if (code2 == null) {
-			 if (duration >= 180) {
-				 code2 = "L-1";
-			 }
-			 else if (duration >= 90) {
-				 code2 = "M-1";
-			 }
-			 else code2 = "S-1";
-		 }
+		
 	 }
 	 
 	 
@@ -87,19 +113,11 @@ public class Exam implements Serializable{
 	}
 
 	public String getCode1() {
-		return code1;
+		return code;
 	}
 
-	public void setCode1(String code1) {
-		this.code1 = code1;
-	}
-
-	public String getCode2() {
-		return code2;
-	}
-
-	public void setCode2(String code2) {
-		this.code2 = code2;
+	public void setCode1(String code) {
+		this.code = code;
 	}
 
 	public String getTitle() {
@@ -126,11 +144,15 @@ public class Exam implements Serializable{
 		this.createDate = createDate;
 	}
 
+
+
 	@Override
 	public String toString() {
-		return "Exam [examID=" + examID + ", code1=" + code1 + ", code2=" + code2 + ", title=" + title + ", duration="
-				+ duration + ", createDate=" + createDate + "]";
+		return "Exam [examID=" + examID + ", code=" + code + ", title=" + title + ", duration=" + duration
+				+ ", createDate=" + createDate + "]";
 	}
+
+	
 	 
 	 
 			 

@@ -2,6 +2,7 @@ package entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
@@ -55,8 +57,23 @@ public class Question implements Serializable{
 	@JoinColumn(name = "CreatorID", nullable = false, referencedColumnName = "AccountID", unique = true)
 	private Account creator;
 
+	@OneToMany (mappedBy = "question")
+	private List<Answer> listOfAnswer;
 	
 	
+	
+	public List<Answer> getListOfAnswer() {
+		return listOfAnswer;
+	}
+
+
+
+	public void setListOfAnswer(List<Answer> listOfAnswer) {
+		this.listOfAnswer = listOfAnswer;
+	}
+
+
+
 	public CategoryQuestion getCategoryQuestion() {
 		return categoryQuestion;
 	}
