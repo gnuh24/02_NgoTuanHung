@@ -2,14 +2,12 @@
 DROP DATABASE IF EXISTS TestingSystem;
 CREATE DATABASE TestingSystem;
 USE TestingSystem;
-
 -- create table : address
 DROP TABLE IF EXISTS Address;
 CREATE TABLE Address(
 	AddressID 				TINYINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     AddressName 			NVARCHAR(100) NOT NULL UNIQUE KEY
 );
-
 -- create table: Department
 DROP TABLE IF EXISTS Department;
 CREATE TABLE Department(
@@ -69,7 +67,7 @@ CREATE TABLE `Employee`(
 -- create table: Manager
 DROP TABLE IF EXISTS `Manager`;
 CREATE TABLE `Manager`(
-	AccountID					TINYINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	AccountID					TINYINT UNSIGNED PRIMARY KEY,
     ManagementNumberOfYear 		TINYINT UNSIGNED NOT NULL,
     FOREIGN KEY(AccountID) REFERENCES `Account` (AccountID)
 );
@@ -157,18 +155,3 @@ CREATE TABLE ExamQuestion(
     PRIMARY KEY (ExamID,QuestionID)
 );
 
-
-select t1.*, t2.*
-FROM question t1 JOIN typequestion t2 ON t1.TypeID = t2.TypeID;
-
-select t1.*, t2.*
-FROM question t1 JOIN categoryquestion t2 ON t1.CategoryID = t2.CategoryID;
-
-select t1.*, t2.*
-FROM question t1 JOIN account t2 ON t1.CreatorID = t2.AccountID;
-
-INSERT INTO Question (Content, CategoryID, TypeID, CreatorID, CreateDate)
-VALUE ("Câu hỏi về .NET", 8, 2, 8, NOW() );
-
-select t1.*, t2.*
-FROM exam t1 JOIN `account` t2 ON t1.creatorID = t2.accountID; 

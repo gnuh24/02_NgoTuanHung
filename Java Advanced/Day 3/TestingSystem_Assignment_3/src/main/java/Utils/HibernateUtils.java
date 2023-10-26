@@ -47,11 +47,15 @@ public class HibernateUtils {
 		configuration.addAnnotatedClass(DetailDepartment.class);
 		configuration.addAnnotatedClass(Address.class);
 		configuration.addAnnotatedClass(Department.class);
+		configuration.addAnnotatedClass(GroupAccount.class);
+
+		
+		
 		configuration.addAnnotatedClass(Employee.class);
 		configuration.addAnnotatedClass(Manager.class);
 		
-		//configuration.addAnnotatedClass(GroupAccount.class);
-		//configuration.addAnnotatedClass(ExamQuestion.class);
+		
+		configuration.addAnnotatedClass(ExamQuestion.class);
 		
 		//Add entity
 		

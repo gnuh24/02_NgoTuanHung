@@ -56,32 +56,12 @@ public class EmployeeRepository {
         }
     }
 
-    public void updateEmployee(Account oldAccount ,Account newAccount, short newWorkingYear) {
+    public void updateEmployee(short id, Employee employee) {
         Session session = null;
         try {
             session = hibernateUtils.openSession();
             session.beginTransaction();
-
-            Employee employee = (Employee) session.load(Employee.class, oldAccount);
-           employee.setAccount(newAccount);
-           employee.setWorkingNumberOfYear( newWorkingYear );
-        
-
-            session.getTransaction().commit();
-            System.out.println("Update success !!");
-        } finally {
-            if (session != null) {
-                session.close();
-            }
-        }
-    }
-
-    public void updateEmployee(Employee employee) {
-        Session session = null;
-        try {
-            session = hibernateUtils.openSession();
-            session.beginTransaction();
-
+            
             session.update(employee);
 
             session.getTransaction().commit();

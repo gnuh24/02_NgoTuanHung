@@ -2,6 +2,7 @@ package entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -57,10 +59,23 @@ public class Exam implements Serializable{
 	 @ManyToOne
 	 @JoinColumn(name = "CreatorID", nullable = false, updatable = false)
 	 private Account creator;
+
 	 
+	 /*__________________________________________Exam_Question___________________________________________________*/
+	@OneToMany (mappedBy = "examID")
+	public List<ExamQuestion> listOfExamQuestion;
 	 
-	 
-	 public CategoryQuestion getCategoryQuestion() {
+	 public List<ExamQuestion> getListOfExamQuestion() {
+		return listOfExamQuestion;
+	}
+
+	public void setListOfExamQuestion(List<ExamQuestion> listOfExamQuestion) {
+		this.listOfExamQuestion = listOfExamQuestion;
+	}
+
+
+
+	public CategoryQuestion getCategoryQuestion() {
 		return categoryQuestion;
 	}
 

@@ -5,37 +5,28 @@ import java.io.Serializable;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 @Entity
 @Table (name = "DetailDepartment")
-public class DetailDepartment implements Serializable{
+@PrimaryKeyJoinColumn(name = "departmentID")
+public class DetailDepartment extends Department implements Serializable{
 	
-
 	private static final long serialVersionUID = 1L;
-	@Id
-	@OneToOne
-    @JoinColumn(name = "DepartmentID")
-    private Department department;
-
-    @OneToOne
+	
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "AddressID", unique = true, nullable = false)
     private Address address;
 	
 	@Column(name = "EmulationPoint")
 	private short emulationPoint;
 
-	public Department getDepartment() {
-		return department;
-	}
-
-	public void setDepartment(Department department) {
-		this.department = department;
-	}
-
+	
 	public Address getAddress() {
 		return address;
 	}
@@ -54,10 +45,10 @@ public class DetailDepartment implements Serializable{
 
 	@Override
 	public String toString() {
-		return "DetailDepartment [department=" + department.getDepartmentName() + ", address=" + address.getAddressName() + ", emulationPoint="
-				+ emulationPoint + "]";
+		return "DetailDepartment [address=" + address + ", emulationPoint=" + emulationPoint + "]";
 	}
-	
+
+
 	
 	
 }

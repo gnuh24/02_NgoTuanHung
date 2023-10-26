@@ -2,8 +2,10 @@ package Demo;
 
 import Repository.AddressRepository;
 import Repository.DepartmentRepository;
+import Repository.DetailDepartmentRepository;
 import entity.Address;
 import entity.Department;
+import entity.DetailDepartment;
 
 public class DemoDetailDepartment {
 
@@ -11,17 +13,26 @@ public class DemoDetailDepartment {
 //		DepartmentRepository test1 = new DepartmentRepository();
 //		for (Department d : test1.getAllDepartment()) {
 //			System.out.println(d);
-//			System.out.println(d.getDetailDepartment().getAddress());
+//			if (d instanceof DetailDepartment) {
+//				DetailDepartment test2 = (DetailDepartment) d;
+//				System.out.println(test2.getAddress());
+//			}
+//		}
+//		
+		
+//		AddressRepository test2 = new AddressRepository();
+//		for (Address string : test2.getAllAddresses()) {
+//			System.out.println(string);
+//			System.out.println(string.getDetailDepartment().getDepartmentName());
 //		}
 		
-		AddressRepository test2= new AddressRepository();
-		for (Address d : test2.getAllAddresses()) {
-			System.out.println(d);
-			if (d.getDetailDepartment().getDepartment() == null) {
-				System.out.println("DD -> D = null");
-			}
-			else System.out.println(d.getDetailDepartment().getDepartment().getDepartmentName());
-		}
+//		DetailDepartmentRepository test3 = new DetailDepartmentRepository();
+//		for (DetailDepartment string :test3.getAllDetailDepartments()) {
+//			System.out.println(string.getDepartmentName());
+//
+//			System.out.println(string);
+//		}
+//		
 		
 		
 	}

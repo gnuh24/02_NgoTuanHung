@@ -11,23 +11,25 @@ import com.vti.entity.Group;
 public class TestProgram {
 	
 	public static void main(String[] args) {
-		// get session
-		Session session = null;
-		try {
-			session = buildSessionFactory().openSession();
-
-			Group group = new Group();
-			group.setName("C#");
-
-			session.save(group);
-
-			System.out.println("Create success!");
-
-		} finally {
-			if (session != null) {
-				session.close();
-			}
-		}
+//		// get session
+//		Session session = null;
+//		try {
+//			session = buildSessionFactory().openSession();
+//
+//			Group group = new Group();
+//			group.setName("C#");
+//
+//			session.save(group);
+//
+//			System.out.println("Create success!");
+//
+//		} finally {
+//			if (session != null) {
+//				session.close();
+//			}
+//		}
+		
+		
 	}
 
 	private static SessionFactory buildSessionFactory() {
@@ -44,3 +46,5 @@ public class TestProgram {
 		return configuration.buildSessionFactory(serviceRegistry);
 	}
 }
+
+

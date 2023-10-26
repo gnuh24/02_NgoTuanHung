@@ -6,8 +6,9 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
+import entity.Employee;
+
 import entity.Account;
-import entity.Department;
 
 public class AccountRepository {
     private HibernateUtils hibernateUtils;
@@ -22,6 +23,20 @@ public class AccountRepository {
         try {
             session = hibernateUtils.openSession();
             Query<Account> query = session.createQuery("FROM Account");
+            return query.list();
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+    }
+	
+	@SuppressWarnings("unchecked")
+    public List<Employee> getAllEmployees() {
+        Session session = null;
+        try {
+            session = hibernateUtils.openSession();
+            Query<Employee> query = session.createQuery("FROM Employee");
             return query.list();
         } finally {
             if (session != null) {

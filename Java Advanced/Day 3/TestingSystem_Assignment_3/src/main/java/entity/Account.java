@@ -2,8 +2,6 @@ package entity;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -20,10 +18,6 @@ import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
-
 import Repository.DepartmentRepository;
 import Repository.PositionRepository;
 import Repository.SalaryRepository;
@@ -32,6 +26,7 @@ import entity.Salary.SalaryName;
 
 @Entity
 @Table (name = "Account")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Account implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
@@ -78,14 +73,7 @@ public class Account implements Serializable{
 	@ManyToOne
 	@JoinColumn(name = "SalaryID")
 	private Salary salary;
-	
-	@OneToOne (mappedBy = "account")
-	private Employee employee;
-	
-	@OneToOne (mappedBy = "accountID")
-	private Manager manager;
-	
-	
+		
 	
 	/*___________________________________________GROUP___________________________________________*/
 	@OneToMany (mappedBy = "creator" ,fetch = FetchType.EAGER)
@@ -129,6 +117,21 @@ public class Account implements Serializable{
 
 	public void setListOfExam(List<Exam> listOfExam) {
 		this.listOfExam = listOfExam;
+	}
+
+	/*_______________________________GROUP_ACCOUNT_________________________________________*/
+	@OneToMany(mappedBy = "accountID")
+	private List<GroupAccount> listOfGroupAccount;
+
+
+	
+	
+	public List<GroupAccount> getListOfGroupAccount() {
+		return listOfGroupAccount;
+	}
+
+	public void setListOfGroupAccount(List<GroupAccount> listOfGroupAccount) {
+		this.listOfGroupAccount = listOfGroupAccount;
 	}
 
 	/*______________________________________PrePersist__________________________________*/
@@ -192,31 +195,6 @@ public class Account implements Serializable{
 	public void setSalary(Salary salary) {
 		this.salary = salary;
 	}
-
-
-
-	public Manager getManager() {
-		return manager;
-	}
-
-
-
-	public void setManager(Manager manager) {
-		this.manager = manager;
-	}
-
-
-
-	public Employee getEmployee() {
-		return employee;
-	}
-
-
-
-	public void setEmployee(Employee employee) {
-		this.employee = employee;
-	}
-
 
 
 	public Account(short accountID, String email, String username, String firstname, String lastname, Date createDate) {
@@ -315,17 +293,14 @@ public class Account implements Serializable{
 	    return firstname + " " + lastname;
 	}
 
-
 	@Override
 	public String toString() {
-	    return String.format("Account [\n  accountID=%d,\n  email=%s,\n  username=%s,\n  firstname=%s,\n  lastname=%s, "
-	                        + "\n  createDate=%s,\n  department=%s,\n  position=%s,\n  salary=%s\n]",
-	                        accountID, email, username, firstname, lastname, createDate,
-	                        department != null ? department.getDepartmentName() : null,
-	                        position != null ? position.getPositionName() : null,
-	                        salary != null ? salary.getSalaryName() : null);
+		return "Account [accountID=" + accountID + ", email=" + email + ", username=" + username + ", firstname="
+				+ firstname + ", lastname=" + lastname + ", createDate=" + createDate + "]";
 	}
 
+
+	
 
 
 

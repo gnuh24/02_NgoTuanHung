@@ -65,6 +65,21 @@ public class Question implements Serializable{
 	public List<Answer> getListOfAnswer() {
 		return listOfAnswer;
 	}
+	
+	@OneToMany (mappedBy = "questionID")
+	public List<ExamQuestion> listOfExamQuestion;
+
+
+
+	public List<ExamQuestion> getListOfExamQuestion() {
+		return listOfExamQuestion;
+	}
+
+
+
+	public void setListOfExamQuestion(List<ExamQuestion> listOfExamQuestion) {
+		this.listOfExamQuestion = listOfExamQuestion;
+	}
 
 
 

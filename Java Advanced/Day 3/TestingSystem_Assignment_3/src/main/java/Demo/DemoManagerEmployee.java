@@ -1,9 +1,12 @@
 package Demo;
 
+
 import Repository.AccountRepository;
 import Repository.EmployeeRepository;
+import Repository.ManagerRepository;
 import entity.Account;
 import entity.Employee;
+import entity.Manager;
 
 public class DemoManagerEmployee {
 	public static void main(String[] args) {
@@ -11,32 +14,32 @@ public class DemoManagerEmployee {
 //		for (Account account : accountRepository.getAllAccount()) {
 //		    System.out.println("Account ID: " + account.getAccountID());
 //		    System.out.println("Username: " + account.getUsername());
+//		    
 //
-//		    // Kiểm tra xem account có liên kết đến Employee không
-//		    Employee employee = account.getEmployee();
-//		    if (employee != null) {
-//		        System.out.println("Working Number of Years: " + employee.getWorkingNumberOfYear());
-//		    } else {
-//		        System.out.println("No associated Employee");
+//		    if (account instanceof Manager) {
+//		        Manager m = (Manager) account;
+//		        System.out.println("Manager");
+//		        System.out.println(m.getManagementNumberOfYear());
 //		    }
-//
+//		    
+//		   
 //		    System.out.println("------------------------");
 //		}
+
 		
 		
 		
 //		EmployeeRepository test2 = new EmployeeRepository();
 //				for (Employee ee : test2.getAllEmployees()) {
-//				    Account account =  ee.getAccount();
-//				    if (account != null) {
-//				    	System.out.println(account.getUsername());
-//				        System.out.println("Working Number of Years: " + ee.getWorkingNumberOfYear());
-//				    } else {
-//				        System.out.println("No associated Account");
-//				    }
-//
-//				    System.out.println("------------------------");
+//				    System.out.println(ee.getUsername());
+//				    System.out.println(ee.getWorkingNumberOfYear());
 //				}
+				
+//		ManagerRepository test3 = new ManagerRepository();
+//		for ( Manager mm : test3.getAllManagers()) {
+//			System.out.println(mm.getUsername());
+//			System.out.println(mm.getManagementNumberOfYear());
+//		}
 		
 	}
 	

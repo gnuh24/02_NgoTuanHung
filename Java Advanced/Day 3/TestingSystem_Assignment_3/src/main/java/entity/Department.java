@@ -18,6 +18,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table (name = "Department")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Department implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
@@ -32,25 +33,9 @@ public class Department implements Serializable{
 			unique=true)
 	private String departmentName;
 
-	 @OneToOne(mappedBy = "department")
-	   private DetailDepartment detailDepartment;
-
-	 
-	 @OneToMany (mappedBy = "department", fetch = FetchType.EAGER ) //Dùng fetch = FetchType.EAGER nếu muốn thấy kết quả đẹp hơn trên console
+	 @OneToMany (mappedBy = "department") //Dùng fetch = FetchType.EAGER nếu muốn thấy kết quả đẹp hơn trên console
 	 private List<Account> listOfAccount;
 	 
-	 
-
-
-	public DetailDepartment getDetailDepartment() {
-		return detailDepartment;
-	}
-
-
-
-	public void setDetailDepartment(DetailDepartment detailDepartment) {
-		this.detailDepartment = detailDepartment;
-	}
 
 
 

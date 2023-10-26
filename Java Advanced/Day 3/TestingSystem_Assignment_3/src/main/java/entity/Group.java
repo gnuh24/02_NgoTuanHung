@@ -6,7 +6,6 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -53,7 +52,21 @@ public class Group implements Serializable{
 	public void setCreator(Account creator) {
 		this.creator = creator;
 	}
+//*_______________________________GROUP_ACCOUNT_________________________________________*/
+	@OneToMany(mappedBy = "groupID")
+	private List<GroupAccount> listOfGroupAccount;
 
+	
+	
+	public List<GroupAccount> getListOfGroupAccount() {
+		return listOfGroupAccount;
+	}
+
+	public void setListOfGroupAccount(List<GroupAccount> listOfGroupAccount) {
+		this.listOfGroupAccount = listOfGroupAccount;
+	}
+	
+	/*______________________________________PrePersist__________________________________*/
 
 	@PrePersist
 	public void prePersist() {

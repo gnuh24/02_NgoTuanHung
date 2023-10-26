@@ -69,28 +69,28 @@ VALUES 				('haidang29productions@gmail.com'	, 'dangblack'		,'Dang'	,		'Nguyen H
 
 -- Add data Employee                 
 INSERT INTO Employee	(AccountID,		WorkingNumberOfYear) 
-VALUES 					(	1,					1			),
-						(	2,					2			),
+VALUES 					-- (	1,					1			),
+						-- (	2,					2			),
 						(	3,					1			),
 						(	4,					3			),
 						(	5,					4			),
  						(	6,					2			),
 						(	7,					3			),
 						(	8,					1			),
-						(	9,					5			),   
+						(	9,					5			), 
                         (	10,					6			);
 
 -- Add data Manager                 
 INSERT INTO Manager		(AccountID,		ManagementNumberOfYear) 
 VALUES 					(	1,					1			),
 						(	2,					2			),
-						(	3,					1			),
-						(	4,					3			),
-						(	5,					4			),
- 						(	6,					2			),
-						(	7,					3			),
-						(	8,					1			),
-						(	9,					5			),   
+						-- (	3,					1			),
+						-- (	4,					3			),
+						-- (	5,					4			),
+ 						-- (	6,					2			),
+						-- (	7,					3			),
+						-- (	8,					1			),
+						-- (	9,					5			),   
                         (	10,					6			);
                         
 -- Add data Group        
