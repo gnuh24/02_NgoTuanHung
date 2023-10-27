@@ -10,13 +10,13 @@ import Repository.GroupRepository;
 public class DemoGroup {
 
 	public static void main(String[] args) {
-//		GroupRepository test1 = new GroupRepository();
-//		List <Group> listOfGroup = test1.getAllGroup();
-//		for (Group group : listOfGroup) {
-//			System.out.println(group);
-//			System.out.println(group.getCreator().getUsername());
-//			System.out.println("_________________________________");
-//		}
+		GroupRepository test1 = new GroupRepository();
+		List <Group> listOfGroup = test1.getAllGroup();
+		for (Group group : listOfGroup) {
+			System.out.println(group);
+			System.out.println(group.getCreator().getUsername());
+			System.out.println("_________________________________");
+		}
 		
 		AccountRepository test2 = new AccountRepository();
 		List <Account> listOfAccount = test2.getAllAccount();
