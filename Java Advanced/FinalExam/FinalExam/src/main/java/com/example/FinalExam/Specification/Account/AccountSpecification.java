@@ -2,15 +2,15 @@ package com.example.FinalExam.Specification.Account;
 
 import com.example.FinalExam.Entity.Account.Account;
 import com.example.FinalExam.Form.Account.AccountFillerForm;
+import com.mysql.cj.util.StringUtils;
 import org.springframework.data.jpa.domain.Specification;
-import org.springframework.util.StringUtils;
 
 public class AccountSpecification {
     public static Specification<Account> buildWhere(String search, AccountFillerForm form){
 
         Specification<Account> where = null;
 
-        if (!StringUtils.isEmpty(search) ){
+        if (!StringUtils.isEmptyOrWhitespaceOnly(search) ){
             search = search.trim();
             AccountCustomSpecification name = new AccountCustomSpecification("username",search);
             AccountCustomSpecification firstname = new AccountCustomSpecification("firstname", search);

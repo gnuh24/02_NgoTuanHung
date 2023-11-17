@@ -18,11 +18,11 @@ public class Lego implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "name", length = 255, nullable = false)
+    @Column(name = "name",  nullable = false)
     private String name;
 
-    @Column(name = "numberOfPieces",nullable = false)
-    private String numberOfPieces;
+    @Column(name = "piece",nullable = false)
+    private int piece;
 
     @Column(name = "type")
     @Enumerated(EnumType.STRING)
