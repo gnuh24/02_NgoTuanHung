@@ -15,6 +15,7 @@ import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -28,6 +29,10 @@ public class AccountService implements IAccountService {
 
     @Autowired
     private ModelMapper modelMapper;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     public Page<Account> getAllAccount(Pageable pageable, String search, AccountFillerForm form){
 
         Specification<Account> where = AccountSpecification.buildWhere(search, form);
@@ -36,7 +41,11 @@ public class AccountService implements IAccountService {
 
     @Transactional
     public void createAccount(AccountCreateForm form){
+
         Account account = modelMapper.map(form, Account.class);
+        // Mã hóa mật khẩu trước khi lưu vào cơ sở dữ liệu
+        String encodedPassword = passwordEncoder.encode(account.getPassword());
+        account.setPassword(encodedPassword);
         repository.save(account);
 
     }
