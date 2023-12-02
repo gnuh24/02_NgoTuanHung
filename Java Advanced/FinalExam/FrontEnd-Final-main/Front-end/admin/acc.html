@@ -1,0 +1,170 @@
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>User Page</title>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+      <script src="../Javascript/jsAcc.js"></script>
+      
+    </head>
+    <style>
+       #updateForm {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            color: #fff;
+            z-index: 9999;
+
+        }
+
+        .confirmation-dialog {
+          position: fixed;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          background-color: #fff;
+          border: 1px solid #ccc;
+          padding: 20px;
+          display: none;
+        }
+    </style>
+  </head>
+  <body>
+      <div class="container">
+          <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+              <div class="container">
+                <a class="navbar-brand" href="#"><p>LEGO</p></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                  <ul class="navbar-nav m-lg-auto">
+                    <li class="nav-item active">
+                      <a class="nav-link" href="acc.html">Home</a>
+                    </li>
+                  </ul>
+                  <ul class="navbar-nav ">
+                    <li class="nav-item ">
+                      <a class="nav-link " href="#"><i class="fa fa-user"></i>Tuấn Hưng</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </nav>
+          <div class="row">
+              <div class="col-md-3">
+                <div class="list-group mt-3">
+                  <a href="product.html" class="list-group-item list-group-item-action">Sản Phẩm</a>   
+                </div>
+                  <div class="list-group mt-3">
+                      <a href="acc.html" class="list-group-item list-group-item-action">Account Nè</a>   
+                  </div>
+              </div>
+              <div class="col-md-9">         
+                  <form>
+                      <div class="form-group">
+                        <label for="createDay">Ngày tạo:</label>
+                        <input type="date" class="form-control form-control-sm" id="createDay">
+                      </div>
+                      <div class="form-group">
+                        <label for="userRole">Vai trò:</label>
+                        <select class="form-control form-control-sm" id="userRole">
+                          <option value="none">Không</option>
+                          <option value="user">User</option>
+                          <option value="admin">Admin</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label for="minCreateDay">Ngày tạo tối thiểu:</label>
+                        <input type="date" class="form-control form-control-sm" id="minCreateDay">
+                      </div>
+                      <div class="form-group">
+                        <label for="maxCreateDay">Ngày tạo tối đa:</label>
+                        <input type="date" class="form-control form-control-sm" id="maxCreateDay">
+                      </div>
+
+                      <input type="text" class="form-control mt-2" id="inputSearch" placeholder="Tìm kiếm...">
+                      <div class="input-group-append">
+                        <button class="btn btn-primary mt-3" id="buttonSearch" type="button">Tìm</button>
+                      </div>
+                    </form>
+                  <div class="input-group mb-3 mt-3">
+                      
+                    </div>
+                    
+                    <div class="d-flex mb-3">
+                      <button class="btn btn-danger " type="button">Xóa tất cả</button>
+                    </div>
+                    <div id="pagination"></div>
+                  <table class="table table-gray" id="accTable">
+                      <thead class="border-2">
+                        <tr>
+                          <th>ID</th>
+                          <th>User Name</th>
+                          <th>First Name</th>
+                          <th>Last Name</th>
+                          <th>Role</th>
+                          <th></th>
+                          <th></th>
+                        </tr>
+                      </thead>
+                      <tbody id="accTableBody">
+                        <tr class="border-2">
+                         
+                        </tr>
+                      
+                      </tbody>
+                    </table>
+                    <form id="updateForm">
+                      <div class="form-group">
+                        <label for="createDay">ID:</label>
+                        <input type="text" disabled class="form-control form-control-sm" id="updateUserId">
+                      </div>
+                      <div class="form-group">
+                        <label for="createDay">UserName:</label>
+                        <input type="text" class="form-control form-control-sm" id="updateUserName">
+                      </div>
+                      <div class="form-group">
+                        <label for="createDay">LastName:</label>
+                        <input type="text" class="form-control form-control-sm" id="updateLastName">
+                      </div>
+                      <div class="form-group">
+                        <label for="createDay">FirstName:</label>
+                        <input type="text" class="form-control form-control-sm" id="updateFirstName">
+                      </div>
+                      <div class="form-group">
+                        <label for="userRole">Vai trò:</label>
+                        <select class="form-control form-control-sm" id="updateUserRole">
+                          <option value="USER">User</option>
+                          <option value="ADMIN">Admin</option>
+                        </select>
+                      </div>
+                      <div class="input-group-append">
+                        <button class="btn btn-primary mt-3" type="button" onclick="updateUser(handleUpdate())">Cập nhật</button>
+                      </div>
+                    </form>
+
+                    <div id="confirmation-dialog" class="confirmation-dialog">
+                      <p>Bạn chắc chứ?</p>
+                      <div>
+                        <button id="confirmButton" class="btn btn-danger" onclick="handleConfirmation()">Chắc</button>
+                        <button id="cancelButton" class="btn btn-secondary" onclick="hideConfirmationDialog()">Đợi xíu</button>
+                      </div>
+                    </div>
+              
+              </div>
+          </div>
+      </div>
+    
+      
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  </body>
+  
+
+  </html>

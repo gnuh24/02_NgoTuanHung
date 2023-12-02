@@ -31,7 +31,6 @@ public class LegoUpdateForm {
 
     private Type type;
 
-
     @PastOrPresent(message = "Bạn không thể truyền một ngày trong tương lai vào đây !!")
     @JsonFormat(pattern = "dd/MM/yyyy")
     private Date createDate;

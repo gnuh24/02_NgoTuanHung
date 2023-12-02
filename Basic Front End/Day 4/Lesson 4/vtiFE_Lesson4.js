@@ -3,7 +3,6 @@ $(document).ready(function () {
     hideModal();
     $("#btn-addNew").click(createData);
 
-
     function openModal() {
         $("#myModal").css({
             display: "block",
@@ -26,17 +25,17 @@ $(document).ready(function () {
                 $("tbody").empty();
                 response.forEach(function (item, index) {
                     $("tbody").append(`
-                        <tr>
-                            <td>${item.id}</td>
-                            <td>${item.name}</td>
-                            <td>${item.phone}</td>
-                            <td>${item.ingame}</td>
-                            <td>
-                                <button  type="button" class="btn btn-warning">Change</button>
-                                <button type="button" class="btn btn-danger">Delete</button>
-                            </td>
-                        </tr>
-                    `);
+                    <tr>
+                        <td>${item.id}</td>
+                        <td>${item.name}</td>
+                        <td>${item.phone}</td>
+                        <td>${item.ingame}</td>
+                        <td>
+                            <button type="button" class="btn btn-warning btn-update" onclick="openUpdateModal(${item.id})">Change</button>
+                            <button type="button" class="btn btn-danger btn-delete" onclick="deleteGamer(${item.id})">Delete</button>
+                        </td>
+                    </tr>`);
+
 
                 });
             },
@@ -78,13 +77,50 @@ $(document).ready(function () {
         });
     }
 
-    function openUpdateMobal(){
-        openModal();
+    function openUpdateModal(id){
+        openModal(); //Đây là cửa sổ để User nhập thông tin
         $("#btn-hide").on("click", hideModal);
         $("#btn-send").on("click", function(event){
             event.preventDefault();
-            update();
+            update(id);
         })
+    }
+
+    function deleteGamer(id){
+        $.ajax({
+            type: "DELETE",
+            url: `https://6528c32d931d71583df26e60.mockapi.io/Gamer/${id}`,
+            success: function (response) {
+                alert("Xóa thành công !!");
+                location.reload();
+            },
+            error: function (error) {
+                alert("Xóa thất bại !!");
+            }
+        });
+        
+    }
+
+    function update(id){
+       
+        $.ajax({
+            type: "PUT",  // Sử dụng phương thức PUT
+            url: `https://6528c32d931d71583df26e60.mockapi.io/Gamer/${id}`,  // Thêm id vào URL
+            data: JSON.stringify({ 
+                "name": $("#hoTen").val(),
+                "phone": $("#soDienThoai").val(),
+                "ingame": $("#tenIngame").val()
+            }), 
+            contentType: "application/json",
+            success: function(response) {
+                alert("Cập nhật thành công !!");
+                location.reload();
+            },
+            error: function(error) {
+                alert("Cập nhật thất bại !!");
+            }
+        });
+        
     }
 
     function create(){  
@@ -107,6 +143,8 @@ $(document).ready(function () {
             }
         });
     }
+
+
 });
 
 

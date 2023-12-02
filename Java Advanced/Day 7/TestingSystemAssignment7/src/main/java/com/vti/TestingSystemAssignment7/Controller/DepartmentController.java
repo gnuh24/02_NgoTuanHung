@@ -1,26 +1,34 @@
-package com.vti.TestingSystemAssignment7.Controll;
+package com.vti.TestingSystemAssignment7.Controller;
 
 import com.vti.TestingSystemAssignment7.Entity.Department;
 import com.vti.TestingSystemAssignment7.Form.DepartmentForm;
 import com.vti.TestingSystemAssignment7.Service.IDepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
+import org.springframework.data.domain.Pageable;
 import java.util.List;
 
 @RestController
-@RequestMapping(name = "api/v1/departments")
-public class DepartmentControll {
+@RequestMapping(value = "api/v1/departments")
+public class DepartmentController {
 
     @Autowired
     private IDepartmentService service;
 
 
     @GetMapping()
-    public List<Department> getAllDepartment(){
+    public Page<Department> getAllDepartment(Pageable pageable){
 
-        return  service.getAllDepartment();
+        return  service.getAllDepartment(pageable);
     }
+
+//    @GetMapping()
+//    public List<Department> getAllDepartment(){
+//
+//        return  service.getAllDepartment();
+//    }
 
     @GetMapping(value = "/{id}")
     public Department getDepartmentByID(@PathVariable(name = "id") short id){

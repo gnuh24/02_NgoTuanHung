@@ -1,0 +1,138 @@
+html{
+    font-family: 'Montserrat', sans-serif;
+}
+
+.bi {
+    font-size: 15px;
+}
+
+.text {
+    color: #F4BF96;
+}
+
+.navbar{
+    height: 70px;
+    width: 100%;
+    background-color: #F4BF96;
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+    
+}
+
+.left-nb {
+    display: flex;
+    margin-left: 70px;
+}
+
+.middle-nb {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: #352F44;
+    text-align: center;
+    display: flex;
+    margin-right: 100px;
+}
+
+.left-nb p {
+    margin-left: 5px;
+    margin-right: 20px;
+    font-size: 18px;
+    font-weight: 300;
+    color: #141E46;
+}
+
+.right-nb {
+    margin-right: 70px;
+}
+.right-nb .bi {
+    margin-left: 10px;
+}
+/* ===== Điều hướng ===== */
+
+.direction ul {
+    display: flex;
+}
+
+.direction ul li a{
+    text-decoration: none;
+    color: #141E46;
+}
+
+.direction ul li:hover a{
+    color:#f57b1d;
+}
+
+.direction ul li {
+    margin: 0 7px;
+}
+
+.direction {
+    background-color:#EFE1D1;
+    height: 40px;
+    width: 100%;
+    font-weight: 300;
+    padding-top:10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/*==== Hero === */
+
+.hero {
+    width: 100%;
+    display: flex;
+    height: calc(100vh - 120px);
+    background-color: #FF9551;
+    align-items: center;
+}
+
+
+.hero-text {
+    width: 30%;
+    margin-left: 70px;
+    color: black;
+    margin-right: 10px;
+}
+
+.hero-text p:nth-child(1){
+    font-style: italic;
+    font-size: 90px;
+    font-weight: 700;
+}
+
+.hero-text p:nth-child(2){
+    font-weight: 400;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.slider {
+    position: relative;
+    width: 95%;
+    margin-left: auto;
+    margin-right: 30px;
+    overflow: hidden;
+    border-radius: 50px;
+
+}
+  
+  .slides {
+    display: flex;
+    transition: transform 0.5s ease;
+
+  }
+  
+  .slide {
+    flex: 0 0 100%;
+
+  }
+  
+  .slide img {
+    width: 100%;
+    height: 650px;
+    border-radius: 50px;
+    object-fit: cover;
+  }

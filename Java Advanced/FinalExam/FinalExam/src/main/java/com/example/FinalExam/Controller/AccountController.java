@@ -21,12 +21,14 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "api/v1/accounts")
+@CrossOrigin(origins = "*")
 public class AccountController {
     @Autowired
     private IAccountService service;
 
     @Autowired
     private ModelMapper modelMapper;
+
     @GetMapping()
     public Page<AccountDTO> getAllAccount(
             Pageable pageable,

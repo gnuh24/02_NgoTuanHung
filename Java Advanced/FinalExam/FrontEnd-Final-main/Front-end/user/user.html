@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="../Javascript/users.js"></script>
+  </head>
+</head>
+<body>
+    <div class="container">
+
+        <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+            <div class="container">
+              <a class="navbar-brand" href="#"><p>LEGO</p></a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav m-lg-auto">
+                  <li class="nav-item active">
+                    <a class="nav-link" href="#">Home</a>
+                  </li>
+                </ul>
+                <ul class="navbar-nav ">
+                  <li class="nav-item ">
+                    <a class="nav-link " href="#"><i class="fa fa-user"></i> John Doe</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+        <div class="row">
+            <div class="col-md-3">
+              <div class="list-group mt-3">
+                <a href="admin.html" class="list-group-item list-group-item-action">Sản Phẩm</a>   
+               </div>
+            </div>
+            <div class="col-md-9 ">
+                  <form>
+                    <div class="form-group">
+                        <label for="userRole">Loại sản phẩm:</label>
+                        <select class="form-control form-control-sm" id="productType">
+                          <option value="NINJAGO">Ninja Go</option>
+                          <option value="CHIMA">Chima</option>
+                          <option value="CITY">City</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="maxPieces">Số mảnh tối đa:</label>
+                        <input type="text" class="form-control form-control-sm" id="maxPieces">
+                    </div>
+                    <div class="form-group">
+                        <label for="minPieces">Số mảnh tối thiểu:</label>
+                        <input type="text" class="form-control form-control-sm" id="minPieces">
+                    </div>
+                    <div class="form-group">
+                      <label for="createDay">Ngày tạo:</label>
+                      <input type="date" class="form-control form-control-sm" id="createDay">
+                    </div>
+                    <div class="form-group">
+                        <label for="maxCreateDay">Ngày tạo tối đa:</label>
+                        <input type="text" class="form-control form-control-sm" id="maxCreateDay">
+                    </div>
+                    <div class="form-group">
+                        <label for="minCreateDay">Ngày tạo tối thiểu:</label>
+                        <input type="text" class="form-control form-control-sm" id="minCreateDay">
+                    </div>
+                    <div class="form-group">
+                        <label for="maxPrice">Giá tối đa:</label>
+                        <input type="text" class="form-control form-control-sm" id="maxPrice" placeholder="$">
+                    </div>
+                    <div class="form-group">
+                        <label for="minPrice">Giá tối thiểu:</label>
+                        <input type="text" class="form-control form-control-sm" id="minPrice" placeholder="$">
+                    </div>
+                    
+                    <input type="text" class="form-control mt-2 " placeholder="Tìm kiếm..." id="search">
+                    <div class="input-group-append">
+                      <button class="btn btn-primary mt-3" type="button" onclick="getInfoSearch()">Tìm</button>
+                    </div>
+
+                  </form>
+
+                <div class="input-group mb-3 mt-3">
+                </div>
+                <table class="table table-gray ">
+                    <thead class="border-2">
+                      <tr>
+                        <th>ID</th>
+                        <th>Loại sản phẩm</th>
+                        <th>Tên sản phẩm</th>
+                        <th>Số lượng mảnh</th>
+                        <th>Giá</th>
+                        <th>Ngày tạo</th>
+                      </tr>
+                    </thead>
+                    <tbody class="" id="productTableBody" >
+                      <tr class="border-2">
+                        <td>1</td>
+                        <td>Xây dựng</td>
+                        <td>Lego City Fire Station</td>
+                        <td>10</td>
+                        <td>20</td>
+                        <td>
+                          <button class="btn btn-primary" onclick="showUpdateForm()">Cập nhật</button>
+                      </td>
+                        <td><button class="btn btn-danger">Xóa</button></td>
+                      </tr>
+                      
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+    </div>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>

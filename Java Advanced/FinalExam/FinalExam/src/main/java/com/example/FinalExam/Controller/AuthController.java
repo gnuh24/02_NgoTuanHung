@@ -29,4 +29,5 @@ public class AuthController {
         LoginInfoDto dto = modelMapper.map(entity, LoginInfoDto.class);
         return dto;
     }
+
 }

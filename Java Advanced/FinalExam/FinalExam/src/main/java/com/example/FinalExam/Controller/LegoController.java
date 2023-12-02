@@ -16,6 +16,8 @@ import javax.validation.Valid;
 @RestController
 @RequestMapping(value = "api/v1/lego")
 @Validated
+@CrossOrigin(origins = "*")
+
 public class LegoController {
     @Autowired
     private ILegoService service;

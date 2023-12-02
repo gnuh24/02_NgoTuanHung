@@ -16,13 +16,17 @@ public class AccountUpdateForm {
     @NotBlank(message = "Bạn không được để trống tên người dùng !!")
     private String firstname;
 
+
     @NotBlank (message = "Bạn không được để trống họ người dùng !!")
     private String lastname;
+
 
     @NotBlank (message = "Bạn không được để trống tên đăng nhập !!")
     private String username;
 
+
     private String password;
+
 
     private Role role;
 

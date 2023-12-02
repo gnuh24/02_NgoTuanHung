@@ -57,7 +57,6 @@ public class WebSecutiryConfiguration extends WebSecurityConfigurerAdapter {
         .and()
 		.authorizeRequests()
 
-
 				.antMatchers(HttpMethod.GET, "/api/v1/accounts").hasAuthority("ADMIN")
 				.antMatchers(HttpMethod.POST, "/api/v1/accounts").permitAll()
 				.antMatchers(HttpMethod.PUT, "/api/v1/accounts/{id}").hasAuthority("ADMIN")
