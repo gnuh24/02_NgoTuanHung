@@ -69,13 +69,20 @@
 // closure(); // Kết quả: "Inner value: 11"
 
 
-var name1 = ["Hưng", "Tuấn", "Duy"]
-name1.forEach( 
-    function (ele, index){
-        console.log(ele);
-        console.log(index);
+function outerFunction(){
+    let i = 0;
+    function innerFunction(){
+        console.log(`Hello ${i++}`);
     }
-)
+    return innerFunction;
+}
+export var saveHello = outerFunction();
+var sayHello2 = outerFunction();
+saveHello();
+sayHello2();
+saveHello();
+sayHello2()
+saveHello();
 
 
 // function hello(name: string){

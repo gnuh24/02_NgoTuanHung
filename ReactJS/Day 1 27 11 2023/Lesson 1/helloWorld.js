@@ -1,3 +1,4 @@
+"use strict";
 // class Person{
 //     private name: string;
 //     private age: number;
@@ -5,6 +6,8 @@
 //         this.name = name;
 //         this.age = age;
 //     }
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.saveHello = void 0;
 //     /**
 //      * Getter name
 //      * @return {string}
@@ -52,11 +55,20 @@
 // closure(); // Kết quả: "Inner value: 10"
 // // Gọi innerFunction lần thứ hai, outerValue tăng lên
 // closure(); // Kết quả: "Inner value: 11"
-var name1 = ["Hưng", "Tuấn", "Duy"];
-name1.forEach(function (ele, index) {
-    console.log(ele);
-    console.log(index);
-});
+function outerFunction() {
+    var i = 0;
+    function innerFunction() {
+        console.log("Hello ".concat(i++));
+    }
+    return innerFunction;
+}
+exports.saveHello = outerFunction();
+var sayHello2 = outerFunction();
+(0, exports.saveHello)();
+sayHello2();
+(0, exports.saveHello)();
+sayHello2();
+(0, exports.saveHello)();
 // function hello(name: string){
 //     console.log(`Hello ${name}`);
 // }
