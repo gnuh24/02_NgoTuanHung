@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import Axios from "axios";
+// import { AxiosService } from "../service/AxiosService";
+import { GamerAPI } from "../service/GamerAPI";
 
 function Gamer() {
   const [list, setList] = useState([]);
@@ -9,35 +10,38 @@ function Gamer() {
   }, []); // Khi component mount, gọi getAllList một lần
 
   const getAllList = async () => {
-     Axios.get(`https://6528c32d931d71583df26e60.mockapi.io/Gamer`)
+     GamerAPI.get()
      .then((response) => {
         setList(response.data);
      })
     .catch( (error) => {
-      console.log(error);
+      console.log(error.toJSON());
     })
   };
 
-  const getAllListById = async (id) => {
-    try {
-      const response = await Axios.get(
-        `https://6528c32d931d71583df26e60.mockapi.io/Gamer/${id}`
-      );
-      setList((prevList) => [...prevList, response.data]);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const getAllListById = async (id) => {
+  //   try {
+  //     const response = await  GamerAPI.get(
+  //       `/${id}`
+  //     );
+  //     setList((prevList) => [...prevList, response.data]);
+  //   } catch (error) {
+  //     console.log(error.toJSON());
+  //   }
+  // };
 
-  const createNewGamer =  async (data) => {
-    Axios.post(`https://6528c32d931d71583df26e60.mockapi.io/Gamer`, data)
-    .then((response) => {
-       getAllList();
-    })
-   .catch( (error) => {
-     console.log(error);
-   })
-  }
+  const createNewGamer = async (data) => {
+    GamerAPI.post(data) // Thêm url endpoint cần tạo mới gamer
+        .then((response) => {
+            getAllList();
+            alert("Create thành công !!")
+
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+};
+
 
     const create = (event) => {
         event.preventDefault();
@@ -65,8 +69,8 @@ function Gamer() {
 function GamerCard(prop) {
     const [name, setName] = useState(prop.name);
     const updateGamerF =  async (id, data) => {
-        Axios.put(`https://6528c32d931d71583df26e60.mockapi.io/Gamer/${id}`, data)
-        .then((response) => { 
+      GamerAPI.put(id, data)
+        .then( (response) => { 
             alert("Update done  ")   
         })
        .catch( (error) => {
@@ -84,15 +88,15 @@ function GamerCard(prop) {
     }
 
 
- const deleteGamerF =  async (id) => {
-        Axios.delete(`https://6528c32d931d71583df26e60.mockapi.io/Gamer/${id}`)
-        .then((response) => { 
-            alert("Delete done  ")   
-        })
-       .catch( (error) => {
-         console.log(error);
-       })
-      }
+    const deleteGamerF = async (id) => {
+      GamerAPI.deleteGamer(id)
+          .then((response) => {
+              alert("Delete done ");
+          })
+          .catch((error) => {
+              console.log(error);
+          });
+  }
    
     const deleteF = (event) => {
         event.preventDefault();

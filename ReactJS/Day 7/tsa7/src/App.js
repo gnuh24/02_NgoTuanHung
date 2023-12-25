@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import Gamer from './functional/gamerCard';
 
@@ -7,6 +6,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <Gamer />
+        
       </header>
     </div>
   );
