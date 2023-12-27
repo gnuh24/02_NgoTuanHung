@@ -2,23 +2,20 @@
 import React from "react";
 import store from "../ReduxService/store"
 import selectCounterList  from "../ReduxService/Selector/CounterSelector";
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { decreaseAction, increaseAction } from "../ReduxService/Action/counterAction";
+import { decremented, incremented } from "../ReduxService/Reducer/counterReducer";
 
 
 export function Button(){
-    const count = useSelector(selectCounterList);
-
+    const count = useSelector((state) => state.counter);
+    const dispatch = useDispatch();
     const clickIncrease = () => {
-        store.dispatch({
-            type: "counter/increase",
-        })
+        dispatch(incremented())
     }
 
     const clickDecrease = () => {
-
-        store.dispatch({
-            type: "counter/decrease",
-        })
+        dispatch(decremented())
     }
 
     return(
@@ -26,7 +23,6 @@ export function Button(){
                 <h1>Value: {count}</h1>
                 <button onClick={clickIncrease}>Increase</button>
                 <button onClick={clickDecrease}>Decrease</button>
-
         </div>
     );
 }
