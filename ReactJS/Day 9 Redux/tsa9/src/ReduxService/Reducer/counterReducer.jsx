@@ -1,37 +1,23 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { fetchIncrementAsync } from "../Middleware/counterMiddle";
 
-const counterSlide = createSlice({
+
+const counterSlice = createSlice({
   name: "counter",
   initialState: 0,
   reducers: {
     incremented: state => state + 1,
-    decremented: state => state - 1
-  }
-}) 
+    decremented: state => state - 1,
+  },
+  extraReducers: (builder) => {
+    // Xử lý action async khi hoàn thành
+    builder.addCase(fetchIncrementAsync.fulfilled, (state) => {
+      state += 1;
+    });
+  },
+});
 
-export const{actions, reducer} = counterSlide;
-export const{incremented, decremented} = actions;
+// Export các actions và reducer
+export const { actions, reducer: counterReducer } = counterSlice;
+export const { incremented, decremented } = actions;
 
-
-
-// const initialState = {
-//     value: 0
-//   }
-  
-  // export function counterReducer(state = initialState, action) {
-  //   switch(action.type) {
-  //     case 'counter/increase':
-  //       return {
-  //         ...state,
-  //         value: state.value + 1
-  //       };
-  //     case 'counter/decrease':
-  //       return {
-  //         ...state,
-  //         value: state.value - 1
-  //       };
-  //     default:
-  //       return state;
-  //   }
-  // }
-  

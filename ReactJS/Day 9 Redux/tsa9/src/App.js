@@ -9,7 +9,7 @@ function App() {
     <div className="App">
         <header className="App-header">
             <Button/>
-            {/* <Input /> */}
+            <Input />
         </header>
     </div>
   );
